@@ -1,0 +1,229 @@
+.ProductDetails {
+    width: 340px !important;
+    height: auto;
+    margin: 40px auto !important;
+    padding: 30px;
+    padding-bottom: 140px !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    isolation: isolate;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)) !important;
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 20px !important;
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15), 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.ProductDetails:hover {
+    transform: translateY(-5px) scale(1.008) !important;
+    border-color: rgba(0, 255, 204, 0.55) !important;
+    box-shadow: 0 12px 35px rgba(0, 255, 204, 0.12), 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.ProductDetails::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        transparent 100%
+    );
+    transform: translateX(-250%) skewX(-25deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.ProductDetails:hover::before {
+    transform: translateX(250%) skewX(-25deg);
+}
+
+.ProductDetails h3:nth-of-type(1) {
+    font-family: 'Inter', 'SF Pro Display', '-apple-system', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+    margin: 0;
+    background: linear-gradient(135deg, #00ffcc 0%, #c7faef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 255, 204, 0.4));
+    transition: filter 0.4s ease;
+}
+
+.ProductDetails:hover h3:nth-of-type(1) {
+    background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 15px rgba(0, 255, 204, 0.8));
+}
+
+.ProductDetails h3:nth-of-type(2) {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.ProductDetails:hover h3:nth-of-type(2) {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+.ProductDetails h3:nth-of-type(3) {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d1b3ff; 
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(209, 179, 255, 0.3);
+}
+
+.ProductDetails h3:nth-of-type(4) {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(148, 163, 184, 0.2);
+}
+
+.ProductDetails img {
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: contain !important;
+    border-radius: 14px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+    margin-bottom: 5px;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ProductDetails:hover img {
+    transform: scale(1.12) rotate(4deg);
+}
+
+.ProductDetails br, 
+.ProductDetails span {
+    display: none !important;
+}
+
+.ProductDetails a {
+    position: absolute !important;
+    height: 42px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-sizing: border-box !important;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ProductDetails a:nth-of-type(1) {
+    bottom: 82px;
+    left: 30px !important;
+    width: 134px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.ProductDetails a:nth-of-type(1):hover {
+    background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    color: #111111;
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.5);
+    transform: translateY(-2px);
+}
+
+.ProductDetails a:nth-of-type(2) {
+    bottom: 82px;
+    right: 30px !important;
+    width: 134px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.ProductDetails a:nth-of-type(2):hover {
+    background: linear-gradient(135deg, #ffffff 0%, #d1b3ff 100%);
+    color: #111111;
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(209, 179, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.ProductDetails a:nth-of-type(3) {
+    bottom: 26px;
+    left: 30px !important;
+    width: 280px !important;
+    border: 1px solid rgba(255, 99, 132, 0.3);
+    background: linear-gradient(135deg, rgba(255, 99, 132, 0.1), rgba(255, 99, 132, 0.02));
+    color: #ff6384;
+}
+
+.ProductDetails a:nth-of-type(3):hover {
+    background: linear-gradient(135deg, #ffffff 0%, #ff4d4d 100%);
+    color: #111111;
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.6);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px), (max-height: 780px) {
+    .ProductDetails {
+        max-width: 300px !important;
+        padding: 20px !important;
+        padding-bottom: 115px !important;
+        gap: 12px !important;
+        margin: 15px auto !important;
+    }
+    .ProductDetails img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    .ProductDetails a {
+        height: 36px !important;
+        font-size: 0.85rem !important;
+    }
+    .ProductDetails a:nth-of-type(1) {
+        bottom: 58px !important;
+        left: 20px !important;
+        width: 120px !important;
+    }
+    .ProductDetails a:nth-of-type(2) {
+        bottom: 58px !important;
+        right: 20px !important;
+        width: 120px !important;
+    }
+    .ProductDetails a:nth-of-type(3) {
+        bottom: 14px !important;
+        left: 20px !important;
+        width: 260px !important;
+    }
+}

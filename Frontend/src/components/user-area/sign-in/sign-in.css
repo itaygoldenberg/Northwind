@@ -1,0 +1,201 @@
+.SignIn {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.page-main-title {
+    text-align: center;
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    background: linear-gradient(135deg, #00ffcc 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 12px rgba(0, 255, 204, 0.5));
+    width: 100%;
+    transform: translateY(-5px) !important;
+}
+
+.SignIn form {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px 12px !important;
+    padding: 22px 24px !important;
+    position: relative;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    isolation: isolate;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)) !important;
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 20px !important;
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15), 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.SignIn form:hover {
+    transform: translateY(-5px) scale(1.008) !important;
+    border-color: rgba(0, 255, 204, 0.55) !important;
+    box-shadow: 0 12px 35px rgba(0, 255, 204, 0.12), 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.SignIn form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        transparent 100%
+    );
+    transform: translateX(-350%) skewX(-25deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.SignIn form:hover::before {
+    transform: translateX(350%) skewX(-25deg);
+}
+
+/* Label 1 (Email) - Cyan Aqua Palette Style from image_e0d47c.png */
+.SignIn form label:nth-of-type(1) {
+    grid-row: 1; 
+    grid-column: span 2;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    font-family: 'Inter', 'SF Pro Display', '-apple-system', sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem !important;
+    letter-spacing: -0.3px;
+    background: linear-gradient(135deg, #00ffcc 0%, #c7faef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 255, 204, 0.4));
+    transition: filter 0.4s ease, background 0.4s ease;
+}
+
+.SignIn form:hover label:nth-of-type(1) {
+    background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 15px rgba(0, 255, 204, 0.8));
+}
+
+/* Label 2 (Password) - Crisp Glow White Style from image_e0d47c.png */
+.SignIn form label:nth-of-type(2) {
+    grid-row: 3; 
+    grid-column: span 2;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-size: 1.15rem !important;
+    font-weight: 700;
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    transition: text-shadow 0.4s ease;
+}
+
+.SignIn form:hover label:nth-of-type(2) {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+.SignIn form input:nth-of-type(1) { grid-row: 2; grid-column: span 2; margin-bottom: 6px !important; }
+.SignIn form input:nth-of-type(2) { grid-row: 4; grid-column: span 2; }
+.SignIn form button { grid-row: 5; grid-column: span 2; }
+
+.SignIn form input {
+    width: 100%;
+    padding: 7px 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #00a383 !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: none !important;
+    filter: none !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.SignIn form input:focus {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #00ccaa !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+.SignIn form input:not(:placeholder-shown) {
+    border-color: #00ffcc !important;
+    background: rgba(0, 40, 30, 0.6) !important;
+    color: #00ffcc !important;
+    filter: drop-shadow(0 0 2px rgba(0, 255, 204, 0.3)) !important;
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.45) !important;
+}
+
+.SignIn form input:not(:placeholder-shown):focus {
+    background: rgba(0, 50, 38, 0.7) !important;
+    box-shadow: 0 0 16px rgba(0, 255, 204, 0.6) !important;
+}
+
+.SignIn form input:-webkit-autofill,
+.SignIn form input:-webkit-autofill:hover,
+.SignIn form input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #00ffcc !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    box-shadow: inset 0 0 0px 1000px rgba(0, 45, 35, 0.85) !important;
+    border: 1px solid #00ffcc !important;
+}
+
+.SignIn form button {
+    width: 100%;
+    padding: 10px !important;
+    margin-top: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    color: #ffffff;
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.SignIn form button:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    color: #111111;
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.6);
+}
+
+@media (max-width: 480px), (max-height: 780px) {
+    .SignIn { padding: 5px 10px; }
+    .page-main-title { font-size: 1.6rem !important; }
+    .SignIn form { padding: 16px 20px !important; gap: 4px 10px !important; }
+    .SignIn form label { font-size: 0.9rem !important; }
+    .SignIn form input { padding: 5px 10px !important; font-size: 0.85rem; }
+    .SignIn form button { padding: 7px !important; font-size: 1.1rem; margin-top: 10px !important; }
+}

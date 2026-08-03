@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Liquid Glass Footer Layout & Animations
+   ========================================================================== */
+footer {
+    grid-column: span 2; 
+    display: flex !important;
+    align-items: center !important; 
+    justify-content: center !important; 
+    box-sizing: border-box !important;
+    cursor: default;
+    
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important; 
+    
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.04) 0%,   
+        rgba(255, 255, 255, 0.01) 100%   
+    ) !important;
+    
+    backdrop-filter: blur(25px) saturate(140%) !important; 
+    -webkit-backdrop-filter: blur(25px) saturate(140%) !important;
+    
+    box-shadow: 
+        inset 0px 1px 0px rgba(255, 255, 255, 0.15),
+        inset 1px 0px 0px rgba(255, 255, 255, 0.08) !important;
+
+    /* Shifts the text to the right to balance out the left sidebar menu width */
+    padding-left: 240px !important; 
+}
+
+footer p {
+    margin: 0 !important; 
+    padding: 0 !important;
+    
+    font-family: 'Inter', 'SF Pro Text', '-apple-system', sans-serif !important;
+    font-size: 0.75rem !important; 
+    font-weight: 700 !important;
+    color: #94a3b8 !important; 
+    letter-spacing: 2px !important; 
+    text-transform: uppercase !important; 
+    
+    /* Smooth multi-property transitions for the hover effect */
+    transition: color 0.4s ease, text-shadow 0.4s ease, letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Premium hover micro-interaction with expanding neon gradient effect */
+footer:hover p {
+    letter-spacing: 4px !important; 
+    background: linear-gradient(135deg, #00ffcc 0%, #ffffff 100%);
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.65)) !important;
+}

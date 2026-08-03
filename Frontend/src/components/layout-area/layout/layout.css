@@ -1,0 +1,101 @@
+.Layout {
+    height: 100vh; 
+    box-sizing: border-box;
+    display: grid; 
+   grid-template-rows: minmax(100px, auto) 1fr 40px;
+    grid-template-columns: 240px auto;   
+    
+    
+    border: 1px solid rgba(255, 255, 255, 0.12) !important; 
+    border-radius: 16px; 
+    margin: 10px; 
+    overflow: hidden; 
+}
+
+.Layout > * {
+    border: none !important; 
+}
+
+header {
+    grid-column: span 2; 
+    display: flex !important; 
+    justify-content: center !important; 
+    align-items: center !important; 
+    box-sizing: border-box !important;
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.04) 0%,   
+        rgba(255, 255, 255, 0.01) 100%   
+    ) !important;
+    
+    backdrop-filter: blur(25px) saturate(140%) !important; 
+    -webkit-backdrop-filter: blur(25px) saturate(140%) !important;
+    
+    
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.15) !important; 
+}
+
+main {
+    overflow: auto; 
+    padding: 20px; 
+}
+
+
+aside, .sidebar, .Layout > nav {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important; 
+    padding: 0px 0 0 25px !important;   
+    box-sizing: border-box !important;
+    gap: 20px !important;               
+    
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important; 
+
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.04) 0%,   
+        rgba(255, 255, 255, 0.01) 100%   
+    ) !important;
+    
+    backdrop-filter: blur(25px) saturate(140%) !important; 
+    -webkit-backdrop-filter: blur(25px) saturate(140%) !important;
+    
+    box-shadow: 
+        inset 0px 1px 0px rgba(255, 255, 255, 0.15),  
+        inset 1px 0px 0px rgba(255, 255, 255, 0.08) !important; 
+}
+
+
+aside a, .sidebar a, .Layout > nav a {
+    font-family: 'Inter', 'SF Pro Text', '-apple-system', sans-serif; 
+    font-size: 1.1rem !important; 
+    font-weight: 700 !important; 
+    color: #94a3b8 !important;          
+    text-decoration: none !important; 
+    text-transform: uppercase !important; 
+    letter-spacing: 2px !important;     
+    padding: 5px 0 !important; 
+    display: inline-block !important;
+    width: fit-content !important; 
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s ease !important;
+}
+
+aside a:hover, .sidebar a:hover, .Layout > nav a:hover {
+    color: #00ffcc !important;          
+    transform: translateX(6px) !important; 
+    text-shadow: 0 0 12px rgba(0, 255, 204, 0.6) !important; 
+}
+main.no-scroll {
+    overflow: hidden !important;
+}
+main {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    min-width: 0;
+}

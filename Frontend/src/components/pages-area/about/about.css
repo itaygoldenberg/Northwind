@@ -1,0 +1,408 @@
+html:has(.About),
+body:has(.About),
+#root:has(.About) {
+    overflow: hidden !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+}
+
+[class*="layout"]:has(.About),
+[class*="main"]:has(.About),
+[class*="content"]:has(.About),
+[class*="wrapper"]:has(.About),
+main:has(.About) {
+    overflow: hidden !important;
+}
+
+.About {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.About::-webkit-scrollbar {
+    display: none !important;
+}
+
+.About {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-top: -30px !important;
+    height: calc(100vh - 140px) !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    position: relative;
+    overflow: hidden !important;
+}
+
+@keyframes driftGlow {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    50% { transform: translate(40px, -30px) rotate(180deg); }
+    100% { transform: translate(0px, 0px) rotate(360deg); }
+}
+
+.about-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(0, 255, 204, 0.13) 0%, transparent 70%);
+    top: 20%;
+    left: 25%;
+    pointer-events: none;
+    filter: blur(40px);
+    animation: driftGlow 12s ease-in-out infinite;
+}
+
+.about-main-title {
+    text-align: center;
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #00ffcc 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 12px rgba(0, 255, 204, 0.5));
+}
+
+.about-card {
+    width: 100%;
+    max-width: 1060px !important;
+    max-height: calc(100vh - 240px) !important;
+    padding: 30px;
+    position: relative;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    border-radius: 20px;
+    text-align: left;
+    z-index: 1;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)) !important;
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15), 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 204, .3) transparent;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.about-card::-webkit-scrollbar {
+    width: 6px;
+}
+.about-card::-webkit-scrollbar-track {
+    background: transparent;
+}
+.about-card::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 204, 0.2);
+    border-radius: 10px;
+}
+
+.about-card:hover {
+    transform: scale(1.005);
+    border-color: rgba(0, 255, 204, 0.55) !important;
+    box-shadow: 0 12px 35px rgba(0, 255, 204, 0.12), 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.about-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        transparent 100%
+    );
+    transform: translateX(-350%) skewX(-25deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.about-card:hover::before {
+    transform: translateX(350%) skewX(-25deg);
+}
+
+.about-section {
+    margin-bottom: 0px;
+}
+
+.about-section h3 {
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin: 0 0 8px 0;
+    background: linear-gradient(135deg, #00ffcc 0%, #c7faef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 255, 204, 0.2));
+}
+
+.about-section p {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    margin: 0;
+}
+
+.features-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 255, 204, 0.3);
+    transform: translateX(4px);
+}
+
+.feature-item h4 {
+    margin: 0 0 4px 0;
+    font-size: 1.0rem;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.feature-item p {
+    color: #cbd5e1;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.tech-stack {
+    display: flex;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.tech-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 12px 6px 34px !important;
+    border-radius: 6px;
+    color: #d1b3ff;
+    background: rgba(209, 179, 255, 0.08);
+    border: 1px solid rgba(209, 179, 255, 0.2);
+    background-repeat: no-repeat !important;
+    background-size: 14px 14px !important;
+    background-position: 10px center !important;
+    transition: all 0.3s ease;
+}
+
+.about-card:hover .tech-badge {
+    color: #ebf5ff;
+    border-color: rgba(0, 255, 204, 0.4);
+    background-color: rgba(0, 255, 204, 0.07);
+}
+
+.tech-badge.react-icon { background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg') !important; }
+.tech-badge.ts-icon { background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg') !important; }
+.tech-badge.vite-icon { background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg') !important; }
+.tech-badge.css-icon { background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg') !important; }
+.tech-badge.html-icon { background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg') !important; }
+
+/* Optimized Fullscreen Layout Configuration */
+@media (min-width: 1300px) {
+    .About {
+        height: calc(100vh - 140px) !important;
+        margin-top: -35px !important;
+    }
+    .about-main-title {
+        font-size: 2.1rem !important;
+        margin-bottom: 18px !important;
+    }
+    .about-card {
+        max-width: 1220px !important;
+        max-height: none !important;
+        padding: 24px 30px !important;
+        gap: 24px !important;
+        overflow-y: hidden !important; /* Disables inner card scrolling on fullscreen completely */
+    }
+    .about-section h3 {
+        font-size: 1.35rem !important;
+        margin-bottom: 10px !important;
+    }
+    .about-section p {
+        font-size: 0.96rem !important;
+        line-height: 1.5 !important;
+    }
+    .features-grid {
+        gap: 8px !important;
+        margin-top: 10px !important;
+    }
+    .feature-item {
+        padding: 10px 14px !important;
+        border-radius: 10px !important;
+    }
+    .feature-item h4 {
+        font-size: 1.05rem !important;
+        margin-bottom: 4px !important;
+    }
+    .feature-item p {
+        font-size: 0.88rem !important;
+        line-height: 1.4 !important;
+    }
+    .tech-stack {
+        gap: 8px !important;
+        margin-top: 12px !important;
+    }
+    .tech-badge {
+        font-size: 0.74rem !important;
+        padding: 6px 12px 6px 36px !important;
+        background-size: 15px 15px !important;
+        background-position: 10px center !important;
+    }
+}
+
+@media (max-height: 820px) and (max-width: 1299px) {
+    .About {
+        height: calc(100vh - 150px) !important;
+        margin-top: -30px !important;
+    }
+    .about-main-title {
+        font-size: 1.6rem !important;
+        margin-bottom: 10px !important;
+    }
+    .about-card {
+        max-width: 1020px !important;
+        padding: 20px 24px !important;
+        gap: 16px !important;
+    }
+    .about-section h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 4px !important;
+    }
+    .about-section p {
+        font-size: 0.88rem !important;
+        line-height: 1.4 !important;
+    }
+    .features-grid {
+        gap: 6px !important;
+        margin-top: 6px !important;
+    }
+    .feature-item {
+        padding: 8px 10px !important;
+    }
+    .feature-item h4 {
+        font-size: 0.92rem !important;
+    }
+    .feature-item p {
+        font-size: 0.8rem !important;
+    }
+    .tech-stack {
+        gap: 6px !important;
+        margin-top: 8px !important;
+    }
+    .tech-badge {
+        padding: 4px 10px 4px 30px !important;
+        font-size: 0.65rem !important;
+        background-size: 12px 12px !important;
+        background-position: 8px center !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .about-card {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        max-width: 450px !important;
+        max-height: calc(100vh - 260px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0,255,204,.45) transparent;
+    }
+
+    .about-card::-webkit-scrollbar {
+        width: 8px;
+    }
+    .about-card::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .about-card::-webkit-scrollbar-thumb {
+        background: rgba(0,255,204,.35);
+        border-radius: 999px;
+    }
+    .tech-badge {
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .About {
+        padding: 10px !important;
+    }
+    .about-main-title {
+        font-size: 1.4rem !important;
+        margin-bottom: 8px !important;
+    }
+    .about-card {
+        padding: 16px 20px !important;
+        max-width: 340px !important;
+    }
+    .about-section h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 4px !important;
+    }
+    .about-section p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    .features-grid {
+        gap: 8px !important;
+        margin-top: 8px !important;
+    }
+    .feature-item {
+        padding: 10px !important;
+    }
+    .feature-item h4 {
+        font-size: 0.9rem !important;
+        margin-bottom: 2px !important;
+    }
+    .feature-item p {
+        font-size: 0.82rem !important;
+        line-height: 1.35 !important;
+    }
+    .tech-stack {
+        gap: 6px !important;
+        margin-top: 8px !important;
+    }
+    .tech-badge {
+        padding: 4px 10px 4px 26px !important;
+        font-size: 0.68rem !important;
+        background-size: 12px 12px !important;
+        background-position: 8px center !important;
+    }
+}
