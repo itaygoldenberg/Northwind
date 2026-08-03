@@ -1,0 +1,298 @@
+.employee-main-title {
+    text-align: center;
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-size: 1.6rem !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: -15px !important;
+    margin-bottom: 15px !important;
+    background: linear-gradient(135deg, #00ffcc 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 12px rgba(0, 255, 204, 0.5));
+    width: 100%;
+}
+
+.AddEmployee {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.AddEmployee form {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px 12px !important;
+    padding: 18px 22px !important;
+    position: relative;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    isolation: isolate;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)) !important;
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 20px !important;
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15), 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.AddEmployee form:hover {
+    transform: translateY(-5px) scale(1.008) !important;
+    border-color: rgba(0, 255, 204, 0.55) !important;
+    box-shadow: 0 12px 35px rgba(0, 255, 204, 0.12), 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.AddEmployee form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        transparent 100%
+    );
+    transform: translateX(-350%) skewX(-25deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.AddEmployee form:hover::before {
+    transform: translateX(350%) skewX(-25deg);
+}
+
+.AddEmployee form label {
+    margin: 0 !important;
+    line-height: 1.2 !important;
+}
+
+.AddEmployee form label:nth-of-type(1) { grid-row: 1; grid-column: 1; }
+.AddEmployee form label:nth-of-type(2) { grid-row: 1; grid-column: 2; }
+.AddEmployee form input:nth-of-type(1) { grid-row: 2; grid-column: 1; }
+.AddEmployee form input:nth-of-type(2) { grid-row: 2; grid-column: 2; }
+
+.AddEmployee form label:nth-of-type(1),
+.AddEmployee form label:nth-of-type(2) {
+    font-family: 'Inter', 'SF Pro Display', '-apple-system', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem !important;
+    letter-spacing: 0.3px;
+    background: linear-gradient(135deg, #00ffcc 0%, #c7faef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 4px rgba(0, 255, 204, 0.2));
+    transition: filter 0.4s ease;
+}
+
+.AddEmployee form:hover label:nth-of-type(1),
+.AddEmployee form:hover label:nth-of-type(2) {
+    background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 255, 204, 0.5));
+}
+
+.AddEmployee form label:nth-of-type(3) { grid-row: 3; grid-column: span 2; margin-top: 3px !important; }
+.AddEmployee form input:nth-of-type(3) { grid-row: 4; grid-column: span 2; }
+
+.AddEmployee form label:nth-of-type(3) {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-weight: 700;
+    font-size: 1.0rem !important;
+    letter-spacing: 0.5px;
+    color: #f8fafc;
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.1);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.AddEmployee form:hover label:nth-of-type(3) {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.AddEmployee form label:nth-of-type(4) { grid-row: 5; grid-column: 1; margin-top: 3px !important; }
+.AddEmployee form label:nth-of-type(5) { grid-row: 5; grid-column: 2; margin-top: 3px !important; }
+.AddEmployee form input:nth-of-type(4) { grid-row: 6; grid-column: 1; }
+.AddEmployee form input:nth-of-type(5) { grid-row: 6; grid-column: 2; }
+
+.AddEmployee form label:nth-of-type(4),
+.AddEmployee form label:nth-of-type(5) {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-size: 0.85rem !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #d1b3ff; 
+    text-shadow: 0 1px 2px rgba(209, 179, 255, 0.2);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.AddEmployee form:hover label:nth-of-type(4),
+.AddEmployee form:hover label:nth-of-type(5) {
+    color: #e9d5ff;
+    text-shadow: 0 0 6px rgba(233, 213, 255, 0.4);
+}
+
+.AddEmployee form label:nth-of-type(6) { grid-row: 7; grid-column: span 2; margin-top: 3px !important; }
+.AddEmployee form input:nth-of-type(6) { grid-row: 8; grid-column: span 2; }
+.AddEmployee form label:nth-of-type(7) { grid-row: 9; grid-column: span 2; margin-top: 3px !important; }
+.AddEmployee form input:nth-of-type(7) { grid-row: 10; grid-column: span 2; }
+
+.AddEmployee form label:nth-of-type(6),
+.AddEmployee form label:nth-of-type(7) {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-size: 0.85rem !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    text-shadow: 0 1px 2px rgba(148, 163, 184, 0.1);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.AddEmployee form:hover label:nth-of-type(6),
+.AddEmployee form:hover label:nth-of-type(7) {
+    color: #cbd5e1;
+    text-shadow: 0 0 6px rgba(203, 213, 225, 0.3);
+}
+
+.AddEmployee form input {
+    width: 100%;
+    padding: 6px 12px !important;
+    margin-bottom: 0px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.AddEmployee form input:focus {
+    border-color: #00ffcc;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+}
+
+.AddEmployee form input[type="file"] {
+    padding: 5px 10px !important;
+    cursor: pointer;
+}
+
+.AddEmployee form input[type="file"]::file-selector-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 3px 10px;
+    margin-right: 6px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    transition: background 0.3s ease;
+}
+
+.AddEmployee form input[type="file"]::file-selector-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.AddEmployee form img {
+    grid-row: 11;
+    grid-column: span 2;
+    width: auto !important;
+    max-width: 100% !important;
+    height: 200px !important;
+    object-fit: contain !important;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    margin: 6px auto !important;
+    display: block;
+}
+
+.AddEmployee form button {
+    grid-row: 12;
+    grid-column: span 2;
+    width: 100%;
+    padding: 9px !important;
+    margin-top: 6px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    color: #ffffff;
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.AddEmployee form button:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    color: #111111;
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.6);
+}
+
+@media (max-width: 480px), (max-height: 780px) {
+    .AddEmployee {
+        padding: 5px 10px;
+    }
+    .AddEmployee form {
+        padding: 8px 18px !important;
+        gap: 2px 8px !important;
+    }
+    .AddEmployee form label {
+        font-size: 0.8rem !important;
+    }
+    .AddEmployee form label:nth-of-type(1),
+    .AddEmployee form label:nth-of-type(2) {
+        font-size: 0.9rem !important;
+    }
+    .AddEmployee form label:nth-of-type(3) {
+        font-size: 0.9rem !important;
+    }
+    .AddEmployee form input {
+        padding: 3px 10px !important;
+        font-size: 0.85rem;
+    }
+    .AddEmployee form img {
+        height: 110px !important;
+    }
+    .AddEmployee form button {
+        padding: 6px !important;
+        font-size: 1.1rem;
+        margin-top: 2px !important;
+    }
+}
+html:has(.AddEmployee),
+body:has(.AddEmployee) {
+    overflow: hidden !important;
+    width: 100%;
+    height: 100%;
+}
+
+html:has(.AddEmployee) {
+    overflow: hidden !important;
+}
+
+body:has(.AddEmployee) {
+    overflow: hidden !important;
+}

@@ -1,0 +1,160 @@
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    
+    background: radial-gradient(circle at 50% 30%, #0d362d 0%, #051a15 60%, #020a08 100%) !important;
+    color: #ffffff !important;
+    overflow: hidden; 
+}
+
+.Layout-Sidebar, .nav-menu, aside { 
+    background: rgba(255, 255, 255, 0.03);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+a, .nav-link, aside span {
+    color: #00ffcc !important; 
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.3); 
+    transition: all 0.3s ease;
+}
+
+a:hover, .nav-link:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+div.iziToast.toast-liquid-success,
+div.iziToast.toast-liquid-success.iziToast-color-green,
+div.iziToast.toast-liquid-error,
+div.iziToast.toast-liquid-error.iziToast-color-red {
+    backdrop-filter: blur(25px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(160%) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    width:  300px !important;
+    max-width: calc(100vw - 40px) !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15), 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+div.iziToast.toast-liquid-success,
+div.iziToast.toast-liquid-success.iziToast-color-green {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+div.iziToast.toast-liquid-error,
+div.iziToast.toast-liquid-error.iziToast-color-red {
+    background: linear-gradient(135deg, rgba(255, 74, 74, 0.22), rgba(25, 10, 10, 0.75)) !important;
+    border: 1px solid rgba(255, 74, 74, 0.35) !important;
+}
+
+div.iziToast.toast-liquid-success:hover {
+    transform: scale(1.005) !important;
+    border-color: rgba(0, 255, 204, 0.55) !important;
+    box-shadow: 0 12px 35px rgba(0, 255, 204, 0.12), 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+div.iziToast.toast-liquid-error:hover {
+    transform: scale(1.005) !important;
+    border-color: rgba(255, 74, 74, 0.65) !important;
+    box-shadow: 0 12px 35px rgba(255, 74, 74, 0.15), 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+div.iziToast.toast-liquid-success::after,
+div.iziToast.toast-liquid-error::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(
+        120deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        transparent 100%
+    ) !important;
+    transform: translateX(-350%) skewX(-25deg) !important;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+}
+
+div.iziToast.toast-liquid-success:hover::after,
+div.iziToast.toast-liquid-error:hover::after {
+    transform: translateX(350%) skewX(-25deg) !important;
+}
+
+div.iziToast.toast-liquid-success::before,
+div.iziToast.toast-liquid-error::before {
+    display: none !important;
+}
+
+div.iziToast.toast-liquid-success .iziToast-body,
+div.iziToast.toast-liquid-error .iziToast-body {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    padding: 14px 34px 14px 16px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+div.iziToast.toast-liquid-success .iziToast-icon,
+div.iziToast.toast-liquid-error .iziToast-icon {
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+    font-size: 20px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 3 !important;
+}
+
+div.iziToast.toast-liquid-success .iziToast-texts,
+div.iziToast.toast-liquid-error .iziToast-texts {
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 1 !important;
+}
+
+.toast-liquid-success .iziToast-title, 
+.toast-liquid-success .iziToast-message,
+.toast-liquid-error .iziToast-title, 
+.toast-liquid-error .iziToast-message {
+    color: #ffffff !important;
+    font-family: 'Inter', 'SF Pro Text', sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.3 !important;
+    max-width: none !important;
+}
+
+div.iziToast .iziToast-close {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    opacity: 0.5 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+div.iziToast .iziToast-close:hover {
+    opacity: 1 !important;
+}
+
+.toast-liquid-success .iziToast-icon {
+    color: #00ffcc !important;
+}
+
+.toast-liquid-error .iziToast-icon {
+    color: #ff4a4a !important;
+}

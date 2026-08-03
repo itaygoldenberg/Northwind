@@ -1,0 +1,75 @@
+.TopProducts {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 30px 24px !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    align-content: start !important;
+    padding: 40px 20px !important;
+    width: 100% !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    min-height: calc(100vh - 140px) !important;
+}
+
+.TopProducts h2 {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    font-family: 'Inter', 'SF Pro Display', sans-serif !important;
+    font-size: 2.2rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important;
+    margin-top: -35px !important;
+    margin-bottom: 30px !important;
+    background: linear-gradient(135deg, #00ffcc 0%, #ffffff 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 4px 12px rgba(0, 255, 204, 0.5)) !important;
+    width: 100% !important;
+    animation: topProductsFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+@keyframes topProductsFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .TopProducts {
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)) !important;
+        gap: 20px 16px !important;
+        padding: 20px 12px !important;
+    }
+    
+    .TopProducts h2 {
+        font-size: 1.75rem !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Strict mobile layout override for a pure vertical descending list */
+@media (max-width: 480px) {
+    .TopProducts {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        padding: 15px 12px !important;
+    }
+
+    .TopProducts h2 {
+        font-size: 1.6rem !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 15px !important;
+    }
+}

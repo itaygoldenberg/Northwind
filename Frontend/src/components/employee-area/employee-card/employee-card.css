@@ -1,0 +1,134 @@
+.EmployeeCard {
+    width: 340px !important;
+    height: 165px !important;
+    display: flex !important;
+    align-items: center;
+    text-align: left;
+    margin: 0 !important;
+    padding: 22px;
+    position: relative;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    isolation: isolate;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03)) !important;
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 20px !important;
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15), 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.EmployeeCard:hover {
+    transform: translateY(-5px) scale(1.008) !important;
+    border-color: rgba(0, 255, 204, 0.55) !important;
+    box-shadow: 0 12px 35px rgba(0, 255, 204, 0.12), 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.EmployeeCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        transparent 100%
+    );
+    transform: translateX(-150%) skewX(-25deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.EmployeeCard:hover::before {
+    transform: translateX(150%) skewX(-25deg);
+}
+
+.EmployeeCard .employee-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    padding-right: 15px;
+    order: 1;
+}
+
+.EmployeeCard h3 {
+    font-family: 'Inter', 'SF Pro Display', '-apple-system', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin: 0;
+    background: linear-gradient(135deg, #00ffcc 0%, #c7faef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 255, 204, 0.4));
+    transition: filter 0.4s ease;
+}
+
+.EmployeeCard:hover h3 {
+    background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 15px rgba(0, 255, 204, 0.8));
+}
+
+.EmployeeCard .employee-title {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    color: #f8fafc;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.EmployeeCard:hover .employee-title {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5), 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+.EmployeeCard .employee-location,
+.EmployeeCard .employee-birthday {
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #d1b3ff; 
+    text-shadow: 0 1px 4px rgba(209, 179, 255, 0.3);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.EmployeeCard:hover .employee-location,
+.EmployeeCard:hover .employee-birthday {
+    color: #e9d5ff;
+    text-shadow: 0 0 8px rgba(233, 213, 255, 0.6), 0 0 15px rgba(0, 255, 204, 0.4);
+}
+
+.EmployeeCard img {
+    width: 75px !important;
+    height: 75px !important;
+    flex-shrink: 0 !important;
+    margin-left: auto;
+    order: 2;
+    object-fit: cover !important;
+    border-radius: 14px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    border: 2px solid rgba(0, 255, 204, 0.2);
+}
+
+.EmployeeCard:hover img {
+    transform: scale(1.12) rotate(4deg);
+    border-color: #00ffcc;
+}

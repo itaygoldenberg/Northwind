@@ -1,0 +1,349 @@
+{
+  "info": {
+    "_postman_id": "d027ebf5-15ab-49d2-9b2b-3604d28faf02",
+    "name": "Northwind REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38468134"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get One Product",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/products/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "products",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Shawarma",
+                  "type": "text",
+                  "uuid": "65869b51-b385-4df3-93ec-b5aa37b41147"
+                },
+                {
+                  "key": "price",
+                  "value": "50",
+                  "type": "text",
+                  "uuid": "ded4f2ac-cd98-423e-ac8b-f19761fa44bd"
+                },
+                {
+                  "key": "stock",
+                  "value": "200",
+                  "type": "text",
+                  "uuid": "9b7d2b59-5f4b-4189-b317-65182ba1ffd1"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "ad2df017-7586-4f01-8aa0-1ae8676a8930",
+                  "src": "/C:/Users/jbt/Desktop/shawarma.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "My Shawarma",
+                  "type": "text",
+                  "uuid": "181436c2-71d2-4fdc-9652-5f7f27da56ad"
+                },
+                {
+                  "key": "price",
+                  "value": "70",
+                  "type": "text",
+                  "uuid": "a8293629-1379-4271-8ff1-56eccbd4bde5"
+                },
+                {
+                  "key": "stock",
+                  "value": "100",
+                  "type": "text",
+                  "uuid": "ebb29348-c865-4d16-bfcf-ea5c211f89f8"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "af22ff8c-d7c2-4e3c-91bd-5422faa9416b",
+                  "src": "/C:/Users/jbt/Desktop/cool-shawarma.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/products/89",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "products",
+                "89"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/products/81",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "products",
+                "81"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Not Found",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/nothing-here",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "nothing-here"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Resigter",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const token = pm.response.json();\r",
+                  "pm.collectionVariables.set(\"token\", token);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Marge\",\r\n    \"lastName\": \"Simpson\",\r\n    \"email\": \"marge@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"roleId\": 2\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const token = pm.response.json();\r",
+                  "pm.collectionVariables.set(\"token\", token);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"bart@gmail.com\",\r\n    \"password\": \"1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "secret": true
+    }
+  ]
+}

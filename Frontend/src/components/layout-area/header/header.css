@@ -1,0 +1,244 @@
+header,
+.Layout-Header,
+.app-header {
+    width: 100% !important;
+    height: 100px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+
+    overflow: visible !important;
+    box-shadow: none !important;
+
+    padding-left: clamp(120px,18vw,240px) !important;
+
+    box-sizing: border-box !important;
+}
+
+.Header{
+    width:100% !important;
+    height:100% !important;
+
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+
+    position:relative !important;
+
+    padding-right:165px !important;
+
+    box-sizing:border-box !important;
+}
+
+.shop-title,
+h1,
+header h1 {
+    margin: 0 !important;
+    font-family: 'Inter', 'SF Pro Display', '-apple-system', sans-serif;
+    font-size: clamp(1.7rem, 3vw, 2.5rem) !important;
+    font-weight: 900 !important;
+    letter-spacing: clamp(2px, 0.35vw, 6px) !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+
+    background: linear-gradient(to bottom, #ffffff 30%, #a7f3d0 70%, #00ffcc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+
+    white-space: nowrap !important;
+
+    filter:
+        drop-shadow(0 1px 0 #00e5ff)
+        drop-shadow(0 2px 0 #00b8d4)
+        drop-shadow(0 3px 1px rgba(0,0,0,.6))
+        drop-shadow(0 8px 15px rgba(0,255,204,.2)) !important;
+
+    cursor: pointer !important;
+
+    transition: all .5s cubic-bezier(.16,1,.3,1) !important;
+
+    animation: cyberPulse 4s infinite ease-in-out !important;
+}
+.shop-title:hover,
+h1:hover,
+header h1:hover {
+
+    transform: scale(1.03) translateY(-3px) !important;
+
+    background: linear-gradient(to bottom,#ffffff 20%,#00ffcc 100%) !important;
+
+    -webkit-background-clip:text !important;
+    background-clip:text !important;
+
+    filter:
+        drop-shadow(0 1px 0 #ffffff)
+        drop-shadow(0 2px 0 #00ffcc)
+        drop-shadow(0 3px 2px rgba(0,0,0,.7))
+        drop-shadow(0 0 25px rgba(0,255,204,.75))
+        drop-shadow(0 0 4px rgba(0,229,255,.35)) !important;
+}
+@keyframes cyberPulse {
+
+    0%,100% {
+
+        filter:
+            drop-shadow(0 1px 0 #00e5ff)
+            drop-shadow(0 2px 0 #00b8d4)
+            drop-shadow(0 3px 1px rgba(0,0,0,.6))
+            drop-shadow(0 8px 15px rgba(0,255,204,.15)) !important;
+
+        opacity: .95;
+    }
+
+    50% {
+
+        filter:
+            drop-shadow(0 1px 0 #ffffff)
+            drop-shadow(0 2px 0 #00ffcc)
+            drop-shadow(0 3px 1px rgba(0,0,0,.5))
+            drop-shadow(0 10px 20px rgba(0,255,204,.35)) !important;
+
+        opacity: 1;
+    }
+}
+.Header .AuthMenu{
+
+    position:absolute !important;
+
+    top:10px !important;
+    right:32px !important;
+
+    z-index:100 !important;
+}
+
+@keyframes cyberPulse{
+
+    0%,100%{
+
+        filter:
+        drop-shadow(0 1px 0 #00e5ff)
+        drop-shadow(0 2px 0 #00b8d4)
+        drop-shadow(0 3px 1px rgba(0,0,0,.6))
+        drop-shadow(0 8px 15px rgba(0,255,204,.15));
+    }
+
+    50%{
+
+        filter:
+        drop-shadow(0 1px 0 #fff)
+        drop-shadow(0 2px 0 #00ffcc)
+        drop-shadow(0 3px 1px rgba(0,0,0,.5))
+        drop-shadow(0 10px 20px rgba(0,255,204,.35));
+    }
+}
+@media (min-width:1001px) {
+
+    .Header {
+        padding-right: 0px !important;
+    }
+
+}
+@media (max-width:1000px) {
+
+    header,
+    .Layout-Header,
+    .app-header {
+        padding-left: 90px !important;
+    }
+
+    .Header {
+        padding-right: 145px !important;
+    }
+
+    .shop-title,
+    h1,
+    header h1 {
+        font-size: 2rem !important;
+        letter-spacing: 2px !important;
+
+        white-space: normal !important;
+        line-height: 1.05 !important;
+
+        max-width: 230px !important;
+
+        margin: 0 auto !important;
+        text-align: center !important;
+
+        text-wrap: balance;
+    }
+}
+
+@media (max-width: 760px) {
+
+    header,
+    .Layout-Header,
+    .app-header {
+        padding-left: 75px !important;
+    }
+
+    .Header {
+       padding-right: 95px !important;
+    padding-left: 135px !important;
+    }
+
+    .shop-title,
+    h1,
+    header h1 {
+
+        font-size: 1.5rem !important;
+        letter-spacing: 1px !important;
+        line-height: 1.05 !important;
+
+        white-space: normal !important;
+        text-wrap: balance !important;
+
+        max-width: 180px !important;
+
+        text-align: center !important;
+        
+
+      
+    }
+
+    .Header .AuthMenu {
+        right: 16px !important;
+        top: 8px !important;
+    }
+}
+@media (max-width: 620px) {
+
+    header,
+    .Layout-Header,
+    .app-header {
+        padding-left: 85px !important;
+    }
+
+    .Header {
+        padding-right: 105px !important;
+    }
+
+    .shop-title,
+    h1,
+    header h1 {
+
+        font-size: 1.18rem !important;
+        letter-spacing: .5px !important;
+
+        max-width: 150px !important;
+
+        position: relative;
+        left: 30px;
+    }
+
+    .Header .AuthMenu {
+        right: 14px !important;
+        transform: scale(.92);
+        transform-origin: top right;
+    }
+}

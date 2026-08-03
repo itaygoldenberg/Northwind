@@ -1,0 +1,182 @@
+/* Premium Typography & Glowing Title Header */
+.suppliers-main-title {
+    text-align: center !important;
+    font-family: 'Inter', 'SF Pro Display', sans-serif !important;
+    font-size: clamp(1.4rem, 4vw, 2.2rem) !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    margin-top: 0px !important;
+    margin-bottom: 20px !important;
+    background: linear-gradient(135deg, #00ffcc 0%, #ffffff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 4px 12px rgba(0, 255, 204, 0.4)) !important;
+    width: 100%;
+}
+
+/* Liquid Glass Table Blueprint - Guarantees absolute fluid constraint with zero screen leakage */
+.SupplierList {
+    display: table !important;
+    width: 100% !important;
+    max-width: 1130px;
+    margin: 0 auto !important;
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+    padding: 5px clamp(6px, 2vw, 24px) 24px clamp(6px, 2vw, 24px) !important;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box !important;
+    table-layout: fixed !important; /* Enforces strict relative width limits to stop horizontal stretching */
+}
+
+/* Micro-Managed Table Header Matrix */
+.SupplierList th {
+    color: #94a3b8;
+    font-family: 'Inter', 'SF Pro Text', sans-serif;
+    font-size: clamp(0.68rem, 1.4vw, 0.85rem) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: clamp(8px, 1.2vw, 14px) clamp(4px, 1vw, 12px);
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Width Allocation Safeguards to ensure proportional balancing across all devices */
+.SupplierList th:first-child, .SupplierList td:first-child { width: 8% !important; } /* Avatar/ID */
+.SupplierList th:last-child, .SupplierList td:last-child { width: 12% !important; } /* Delete Btn */
+.SupplierList th:nth-last-child(2), .SupplierList td:nth-last-child(2) { width: 12% !important; } /* Edit Btn */
+
+/* Floating Glass Row Transitions */
+.SupplierList tbody tr {
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.SupplierList tbody tr:hover {
+    transform: translateY(-2px) scale(1.001) !important;
+}
+
+/* Advanced Liquid Glass Cells - Intelligent Text Wrapping and Micro-Ellipsis clipping Protection */
+.SupplierList td {
+    padding: clamp(8px, 1.4vw, 12px) clamp(4px, 1vw, 12px);
+    color: #f8fafc;
+    font-size: clamp(0.72rem, 1.4vw, 0.9rem);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)) !important;
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0px rgba(255, 255, 255, 0.1) !important;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Keeps records bound cleanly side-by-side without breaking into chaotic multiple lines */
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Encapsulated Deep Cyan Glass Boundaries */
+.SupplierList td:first-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    font-weight: 800;
+    color: #00ffcc;
+    text-shadow: 0 1px 4px rgba(0, 255, 204, 0.2);
+}
+
+.SupplierList td:last-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+/* Interactive Hover Glow Transmission Injections */
+.SupplierList tbody tr:hover td {
+    border-color: rgba(0, 255, 204, 0.45) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03)) !important;
+    box-shadow: 0 6px 20px rgba(0, 255, 204, 0.08), 0 12px 28px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Scalable Avatar Image Node Configuration */
+.SupplierList img {
+    width: clamp(28px, 3.5vw, 42px) !important;
+    height: clamp(28px, 3.5vw, 42px) !important;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    display: block;
+    flex-shrink: 0 !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.SupplierList tbody tr:hover img {
+    transform: scale(1.05);
+    border-color: #00ffcc;
+}
+
+/* Universal Action Buttons Pipeline Configuration */
+.SupplierList button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Spans full proportional width of allocated column layout */
+    padding: clamp(4px, 0.8vw, 6px) clamp(6px, 1vw, 12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    color: #ffffff;
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-weight: 800;
+    font-size: clamp(0.68rem, 1.2vw, 0.82rem) !important;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0 !important;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* Cyan Edit Pipeline Interactions */
+.SupplierList td:nth-last-child(2) button:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    color: #111111;
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 255, 204, 0.5);
+}
+
+/* Crimson Delete Pipeline Interactions */
+.SupplierList td:last-child button {
+    border-color: rgba(255, 99, 132, 0.4);
+    color: #ff6384;
+}
+
+.SupplierList td:last-child button:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #ff3b5c 100%);
+    color: #111111;
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(255, 59, 92, 0.5);
+}
+
+/* Extreme Low Viewport Shielding Matrix - Completely eliminates horizontal scroll layout breaks */
+@media (max-width: 768px) {
+    .SupplierList {
+        padding: 5px 6px 20px 6px !important;
+        border-spacing: 0 6px !important;
+    }
+    
+    .SupplierList th, 
+    .SupplierList td {
+        padding: 6px 4px !important;
+    }
+    
+    .SupplierList button {
+        padding: 4px 4px !important;
+        letter-spacing: 0px !important;
+    }
+}
