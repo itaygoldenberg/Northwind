@@ -1,105 +1,152 @@
 <div align="center">
 
-  # 🍃 NORTHWIND
-  ### **Modern Full-Stack E-Commerce & Management Platform**
+# Northwind Commerce Platform
 
-  An enterprise-grade, full-stack web application engineering the classic Northwind database into a modern, high-performance E-Commerce platform with an ultra-sleek **Liquid Glass (Glassmorphism)** UI design system.
+**A full-stack React and TypeScript workspace built around the classic Northwind relational dataset.**
 
-  [![Live Demo](https://img.shields.io/badge/LIVE_DEMO-GitHub_Pages-646CFF?style=for-the-badge&logo=github&logoColor=white)](https://itaygoldenberg.github.io/Northwind/)
-  [![GitHub Repo](https://img.shields.io/badge/GITHUB-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/itaygoldenberg/Northwind)
-
-  <br />
-
-  ![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-  ![TypeScript](https://img.shields.io/badge/TypeScript_5-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-  ![Vite](https://img.shields.io/badge/Vite_Build-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-  ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-593D88?style=for-the-badge&logo=redux&logoColor=white)
-  ![Node.js](https://img.shields.io/badge/Node.js_Runtime-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-  ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/MySQL_Database-00758F?style=for-the-badge&logo=mysql&logoColor=white)
-  ![JWT Security](https://img.shields.io/badge/JWT-Protected-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=111)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/Express-5-111827?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
 </div>
 
----
+## Overview
 
-## 📑 Table of Contents
+Northwind is a full-stack commerce and operations application with a React SPA, an Express REST API and a MySQL database. The project demonstrates typed frontend architecture, global state management, authenticated API calls, relational data access and media upload workflows.
 
-- [Key Features](#-key-features)
-- [Design System & UI/UX](#-design-system--uiux)
-- [Tech Stack Architecture](#-tech-stack-architecture)
-- [System Data Flow](#-system-data-flow)
-- [REST API Reference](#-rest-api-reference)
-- [Project Directory Structure](#-project-directory-structure)
-- [Getting Started & Local Setup](#-getting-started--local-setup)
-- [Environment Configuration](#-environment-configuration)
-- [Author](#-author)
+The interface includes dedicated workspaces for products, employees and suppliers. The bundled backend implements authentication and protected product CRUD routes, while the frontend is organized into reusable feature areas and service boundaries.
 
----
+## Highlights
 
-## ✨ Key Features
+- Product catalog with list, details and top-products views.
+- Create, edit and delete workflows with image upload support.
+- Employee and supplier management interfaces.
+- Registration and sign-in with JWT-based authentication.
+- User and administrator role handling.
+- Protected write operations and administrator-only deletion.
+- Redux Toolkit stores for products, employees, suppliers and users.
+- Axios interceptor for authenticated API communication.
+- React Hook Form validation and image previews.
+- Lazy-loaded routes with loading and 404 states.
+- Express middleware for rate limiting, XSS reduction and error handling.
+- MySQL access through a dedicated data layer.
+- Responsive Liquid Glass-inspired UI.
 
-### 🛍️ E-Commerce & Product Management
-* **Dynamic Product Catalog**: Real-time filtering, instant category sorting, and instant text search across all products.
-* **Detailed Inventory Metrics**: Deep-dive single product view featuring real-time stock level status, pricing breakdown, and supplier details.
-* **Top Products & Analytics**: Highlighting top-rated items, featured stock, and quick aggregate dashboard stats.
-
-### 🔐 Security, Authentication & Role Management
-* **JWT-Based Authentication**: Secure sign-up and sign-in pipelines utilizing password hashing and JSON Web Tokens.
-* **Role-Based Access Control (RBAC)**: Strict separation of privileges between regular **Users** and privileged **Administrators**.
-* **Protected API Endpoints**: Interceptors attached to all mutating requests (`POST`, `PUT`, `DELETE`) validating admin access.
-
-### 🛠️ Administrative Dashboards & Management
-* **Full CRUD Suite**: Add, edit, preview, and safely soft-delete products, suppliers, and employee entries.
-* **Asynchronous Image Handling**: Dynamic client-side previews and server-side file asset storage.
-* **Comprehensive Validation**: Dynamic form validation powered by `react-hook-form` with custom regex constraints and real-time user feedback.
-
----
-
-## 💎 Design System & UI/UX
-
-The interface implements a handcrafted **Liquid Glass (Glassmorphism)** design theme engineered entirely with modern pure CSS3:
-
-* **Translucent Layering**: Backdrop blur filters (`backdrop-filter: blur()`) combined with frosted glass borders.
-* **Micro-Interactions**: Dynamic glow effects, subtle depth drop-shadows, and smooth state transitions on hover/click.
-* **Responsive Layout**: Engineered from ground up using modern CSS Grid and Flexbox layouts for seamless rendering on mobile, tablet, and desktop display screens.
-
----
-
-## 🛠️ Tech Stack Architecture
-
-### Frontend Layer
-* **Core Framework**: React 18 with TypeScript 5
-* **Build System**: Vite (lightning-fast HMR and build optimization)
-* **State Engine**: Redux Toolkit (Slices pattern & Centralized Store)
-* **Routing**: React Router DOM v6
-* **Form Engine**: React Hook Form
-* **HTTP Client**: Axios with custom Request/Response Interceptors
-* **Styling**: Pure CSS3 (Glassmorphism design tokens, CSS Variables, Animations)
-
-### Backend Layer
-* **Runtime**: Node.js
-* **Framework**: Express.js (TypeScript)
-* **Architecture**: 3-Tier Enterprise Pattern (Controllers ➔ Services ➔ Data Access Layer)
-* **Database**: MySQL Server (`mysql2` connection pooling with parametrized SQL queries)
-* **Security & Auth**: `jsonwebtoken` (JWT), `bcryptjs` password hashing, CORS policies, Custom Error & Security Middlewares
-
----
-
-## 📐 System Data Flow
+## Architecture
 
 ```text
-┌─────────────────────────────────────────────────────────────────────────┐
-│                           Client Side (React)                           │
-│   Components  ◄──►  Redux Slices/Store  ◄──►  Axios Interceptors / Services │
-└────────────────────────────────────┬────────────────────────────────────┘
-                                     │ HTTP REST API (JSON)
-┌────────────────────────────────────▼────────────────────────────────────┐
-│                        Backend Engine (Express.js)                      │
-│   Middlewares (Auth/Logger/Error)  ➔  Controllers  ➔  Services Layer    │
-└────────────────────────────────────┬────────────────────────────────────┘
-                                     │ SQL Queries (DAL Connection Pool)
-┌────────────────────────────────────▼────────────────────────────────────┐
-│                         Database Layer (MySQL)                          │
-│            Northwind Schema (Products, Categories, Users, Employees)    │
-└─────────────────────────────────────────────────────────────────────────┘
+React + TypeScript SPA
+        |
+        | Axios / JSON / multipart form data
+        v
+Express REST API
+        |
+        | mysql2
+        v
+Northwind MySQL database
+```
+
+## Tech Stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | React 19, TypeScript, Vite, React Router |
+| State | Redux Toolkit, React Redux |
+| Forms and UI | React Hook Form, MUI, Emotion, iziToast |
+| Networking | Axios, JWT Decode |
+| Backend | Node.js, Express 5, TypeScript |
+| Security | JSON Web Tokens, Zod, rate limiting, input sanitization |
+| Data | MySQL, mysql2, Northwind schema |
+| Media | Multipart uploads, server-side image storage |
+
+## Repository Structure
+
+```text
+Northwind/
+|-- Frontend/             React and TypeScript SPA
+|   |-- src/components/   Pages, layouts and feature components
+|   |-- src/services/     API service layer
+|   |-- src/redux/        Global application state
+|   `-- src/models/       Shared frontend models
+|-- Backend/              Express and TypeScript REST API
+|   |-- src/controllers/  HTTP routes
+|   |-- src/services/     Business and database logic
+|   |-- src/middleware/   Security and error handling
+|   `-- src/models/       Backend data contracts
+|-- Database/
+|   `-- northwind.sql     Database schema and seed data
+`-- README.md             Project documentation
+```
+
+## Local Setup
+
+### 1. Database
+
+Create a MySQL database by importing:
+
+```text
+Database/northwind.sql
+```
+
+### 2. Backend
+
+Create `Backend/.env` with your own local values:
+
+```env
+ENVIRONMENT=development
+MYSQL_HOST=localhost
+MYSQL_USER=your_mysql_user
+MYSQL_PASSWORD=your_mysql_password
+MYSQL_DATABASE=northwind
+JWT_SECRET=replace_with_a_long_random_secret
+PRODUCT_IMAGES_BASE_URL=http://localhost:4000/api/products/images/
+HASH_SALT=replace_with_a_private_salt
+```
+
+Then install and start the API:
+
+```bash
+cd Backend
+npm install
+npm start
+```
+
+The API listens on `http://localhost:4000`.
+
+### 3. Frontend
+
+In a second terminal:
+
+```bash
+cd Frontend
+npm install
+npm run dev
+```
+
+Open the local URL printed by Vite.
+
+## API Routes
+
+| Method | Route | Access |
+|---|---|---|
+| POST | `/api/register` | Public |
+| POST | `/api/login` | Public |
+| GET | `/api/products` | Public |
+| GET | `/api/products/:id` | Public |
+| POST | `/api/products` | Signed-in user |
+| PUT | `/api/products/:id` | Signed-in user |
+| DELETE | `/api/products/:id` | Administrator |
+| GET | `/api/products/images/:imageName` | Public |
+
+## Security Notes
+
+- Never commit `Backend/.env` or real credentials.
+- Use a long, unique `JWT_SECRET` and `HASH_SALT` outside development.
+- The provided configuration is intended for local development; review CORS, uploads, rate limits and database permissions before public deployment.
+
+## Author
+
+Built by **Itay Goldenberg**.
+
+[GitHub](https://github.com/itaygoldenberg) | [LinkedIn](https://www.linkedin.com/in/itay-goldenberg/)
