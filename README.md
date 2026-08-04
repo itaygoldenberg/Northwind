@@ -1,93 +1,117 @@
-<div align="center">
+<p align="center">
+  <img src="./docs/readme-banner.svg" alt="Northwind Commerce Platform animated project banner" width="100%" />
+</p>
 
-# Northwind Commerce Platform
+<p align="center">
+  <a href="#running-locally"><img src="./docs/actions/primary.svg" alt="RUN NORTHWIND LOCALLY" width="250" /></a>
+  <a href="https://github.com/itaygoldenberg/Northwind"><img src="./docs/actions/source.svg" alt="View Northwind Commerce Platform source code" width="250" /></a>
+  <a href="https://www.linkedin.com/in/itay-goldenberg/"><img src="./docs/actions/linkedin.svg" alt="Connect with Itay Goldenberg on LinkedIn" width="250" /></a>
+</p>
 
-**A full-stack React and TypeScript workspace built around the classic Northwind relational dataset.**
+<p align="center">
+  <a href="#overview">Overview</a>&nbsp;&middot;&nbsp;
+  <a href="#features">Features</a>&nbsp;&middot;&nbsp;
+  <a href="#workflow">Workflow</a>&nbsp;&middot;&nbsp;
+  <a href="#technology">Technology</a>&nbsp;&middot;&nbsp;
+  <a href="#running-locally">Local setup</a>
+</p>
 
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=111)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Express](https://img.shields.io/badge/Express-5-111827?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-[![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
-
-</div>
+> [!NOTE]
+> A full-stack course project demonstrating frontend architecture, protected REST routes and relational persistence.
 
 ## Overview
 
-Northwind is a full-stack commerce and operations application with a React SPA, an Express REST API and a MySQL database. The project demonstrates typed frontend architecture, global state management, authenticated API calls, relational data access and media upload workflows.
+Northwind is a full-stack commerce and operations application composed of a React SPA, an Express REST API and a MySQL database.
 
-The interface includes dedicated workspaces for products, employees and suppliers. The bundled backend implements authentication and protected product CRUD routes, while the frontend is organized into reusable feature areas and service boundaries.
+The repository demonstrates typed feature boundaries, Redux state, authenticated API communication, relational data access and multipart image workflows.
 
-## Highlights
+<table><tr><td align="center" width="25%"><strong>REACT</strong><br /><sub>typed SPA</sub></td><td align="center" width="25%"><strong>EXPRESS</strong><br /><sub>REST API</sub></td><td align="center" width="25%"><strong>MYSQL</strong><br /><sub>Northwind data</sub></td><td align="center" width="25%"><strong>JWT</strong><br /><sub>protected routes</sub></td></tr></table>
 
-- Product catalog with list, details and top-products views.
-- Create, edit and delete workflows with image upload support.
-- Employee and supplier management interfaces.
-- Registration and sign-in with JWT-based authentication.
-- User and administrator role handling.
-- Protected write operations and administrator-only deletion.
-- Redux Toolkit stores for products, employees, suppliers and users.
-- Axios interceptor for authenticated API communication.
-- React Hook Form validation and image previews.
-- Lazy-loaded routes with loading and 404 states.
-- Express middleware for rate limiting, XSS reduction and error handling.
-- MySQL access through a dedicated data layer.
-- Responsive Liquid Glass-inspired UI.
-
-## Architecture
-
-```text
-React + TypeScript SPA
-        |
-        | Axios / JSON / multipart form data
-        v
-Express REST API
-        |
-        | mysql2
-        v
-Northwind MySQL database
-```
-
-## Tech Stack
-
-| Layer | Technologies |
+| Project detail | Implementation |
 |---|---|
-| Frontend | React 19, TypeScript, Vite, React Router |
-| State | Redux Toolkit, React Redux |
-| Forms and UI | React Hook Form, MUI, Emotion, iziToast |
-| Networking | Axios, JWT Decode |
-| Backend | Node.js, Express 5, TypeScript |
-| Security | JSON Web Tokens, Zod, rate limiting, input sanitization |
-| Data | MySQL, mysql2, Northwind schema |
-| Media | Multipart uploads, server-side image storage |
+| Frontend | React 19, TypeScript, Vite and Redux Toolkit |
+| Backend | Express 5 REST API written in TypeScript |
+| Data | MySQL with the classic Northwind schema |
+| Security | JWT roles, rate limiting and input validation |
 
-## Repository Structure
+## Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Workflow](#workflow)
+- [Technology](#technology)
+- [Project structure](#project-structure)
+- [Running locally](#running-locally)
+- [Additional details](#additional-details)
+- [Operational notes](#operational-notes)
+- [Author](#author)
+
+## Features
+
+### Commerce workspace
+
+The SPA includes product list, details, top-products and image-aware create, edit and delete workflows. Employee and supplier management interfaces are organized as dedicated feature areas.
+
+### Authentication and authorization
+
+Users can register and sign in. JWT data drives role-aware navigation, authenticated write operations and administrator-only deletion.
+
+### Structured frontend architecture
+
+React Router, lazy routes, Redux Toolkit stores, typed models, service classes and an Axios interceptor keep UI, state and transport concerns separated.
+
+### REST and relational data
+
+The bundled Express API implements authentication and protected product routes through controller, service and data-access layers backed by MySQL.
+
+## Workflow
+
+<p align="center">
+  <img src="./docs/workflow.svg" alt="Northwind Commerce Platform animated application workflow" width="100%" />
+</p>
+
+## Technology
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=react,ts,redux,vite,nodejs,express,mysql,materialui" alt="Northwind Commerce Platform primary technology logos" />
+</p>
+
+| Technology | Role |
+|---|---|
+| React 19 + TypeScript | Typed single page application |
+| Redux Toolkit | Products, employees, suppliers and user state |
+| React Router | Feature routes, lazy loading and 404 handling |
+| React Hook Form | Validated CRUD forms and file inputs |
+| Node.js + Express 5 | REST API runtime |
+| MySQL + mysql2 | Relational persistence |
+| JWT + Zod | Authentication, roles and validation |
+| MUI + Emotion | UI components and theme support |
+
+## Project structure
 
 ```text
 Northwind/
 |-- Frontend/             React and TypeScript SPA
-|   |-- src/components/   Pages, layouts and feature components
+|   |-- src/components/   Layout, pages and feature areas
 |   |-- src/services/     API service layer
-|   |-- src/redux/        Global application state
-|   `-- src/models/       Shared frontend models
-|-- Backend/              Express and TypeScript REST API
+|   |-- src/redux/        Global state
+|   `-- src/models/       Typed frontend contracts
+|-- Backend/              Express and TypeScript API
 |   |-- src/controllers/  HTTP routes
 |   |-- src/services/     Business and database logic
 |   |-- src/middleware/   Security and error handling
-|   `-- src/models/       Backend data contracts
+|   `-- src/models/       Backend contracts
 |-- Database/
-|   `-- northwind.sql     Database schema and seed data
+|   `-- northwind.sql     Schema and seed data
+|-- docs/                 README-only visual assets
 `-- README.md             Project documentation
 ```
 
-## Local Setup
+## Running locally
 
 ### 1. Database
 
-Create a MySQL database by importing:
-
-```text
-Database/northwind.sql
-```
+Import `Database/northwind.sql` into MySQL.
 
 ### 2. Backend
 
@@ -104,15 +128,13 @@ PRODUCT_IMAGES_BASE_URL=http://localhost:4000/api/products/images/
 HASH_SALT=replace_with_a_private_salt
 ```
 
-Then install and start the API:
+Install and start the API:
 
 ```bash
 cd Backend
 npm install
 npm start
 ```
-
-The API listens on `http://localhost:4000`.
 
 ### 3. Frontend
 
@@ -124,9 +146,9 @@ npm install
 npm run dev
 ```
 
-Open the local URL printed by Vite.
+Open the local URL printed by Vite. The API listens on `http://localhost:4000`.
 
-## API Routes
+## Additional details
 
 | Method | Route | Access |
 |---|---|---|
@@ -139,14 +161,20 @@ Open the local URL printed by Vite.
 | DELETE | `/api/products/:id` | Administrator |
 | GET | `/api/products/images/:imageName` | Public |
 
-## Security Notes
+## Operational notes
 
-- Never commit `Backend/.env` or real credentials.
-- Use a long, unique `JWT_SECRET` and `HASH_SALT` outside development.
-- The provided configuration is intended for local development; review CORS, uploads, rate limits and database permissions before public deployment.
+- Never commit Backend/.env or real database credentials.
+- Use long, unique JWT and hash secrets outside development.
+- Review CORS, uploads, rate limits and database privileges before public deployment.
 
 ## Author
 
-Built by **Itay Goldenberg**.
+<p align="center">
+  <strong>Itay Goldenberg</strong><br />
+  Full Stack Developer Student
+</p>
 
-[GitHub](https://github.com/itaygoldenberg) | [LinkedIn](https://www.linkedin.com/in/itay-goldenberg/)
+<p align="center">
+  <a href="https://github.com/itaygoldenberg"><img src="./docs/actions/github.svg" alt="Itay Goldenberg on GitHub" width="250" /></a>
+  <a href="https://www.linkedin.com/in/itay-goldenberg/"><img src="./docs/actions/linkedin.svg" alt="Itay Goldenberg on LinkedIn" width="250" /></a>
+</p>
