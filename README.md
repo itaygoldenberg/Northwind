@@ -3,10 +3,14 @@
 </p>
 
 <p align="center">
+  <a href="https://northwind-itaygold.web.app"><img src="./docs/actions/demo.svg" alt="View the Northwind Commerce Platform live demo" width="250" /></a>
   <a href="#running-locally"><img src="./docs/actions/primary.svg" alt="RUN NORTHWIND LOCALLY" width="250" /></a>
   <a href="https://github.com/itaygoldenberg/Northwind"><img src="./docs/actions/source.svg" alt="View Northwind Commerce Platform source code" width="250" /></a>
   <a href="https://www.linkedin.com/in/itay-goldenberg/"><img src="./docs/actions/linkedin.svg" alt="Connect with Itay Goldenberg on LinkedIn" width="250" /></a>
 </p>
+
+> [!TIP]
+> **Live demo:** [northwind-itaygold.web.app](https://northwind-itaygold.web.app) — the client is deployed to Firebase Hosting, which serves static files. The API and both databases are not deployed, so the interface loads and reports itself offline rather than showing data. To see the system working end to end, run it locally or with Docker as described below.
 
 <p align="center">
   <a href="#overview">Overview</a>&nbsp;&middot;&nbsp;
