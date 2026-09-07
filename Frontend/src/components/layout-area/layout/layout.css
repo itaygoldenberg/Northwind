@@ -99,3 +99,73 @@ main {
     padding: 20px;
     min-width: 0;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Sidebar on short screens (14" laptops at 100% zoom).
+   The nav is a grid cell in a 1fr row, so its content used to
+   be clipped: .Layout is overflow:hidden and the nav had no
+   scrolling of its own.
+   ═══════════════════════════════════════════════════════════ */
+
+aside, .sidebar, .Layout > nav {
+    /* a grid item defaults to min-height:auto, which refuses to shrink
+       below its content — that is what blocked scrolling */
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-block: 14px !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 204, 0.35) transparent;
+}
+
+.Layout > nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.Layout > nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.Layout > nav::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 204, 0.28);
+    border-radius: 999px;
+}
+
+.Layout > nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 204, 0.5);
+}
+
+/* tighten the menu so a 14" screen fits it without scrolling at all */
+@media (max-height: 900px) {
+
+    aside, .sidebar, .Layout > nav {
+        gap: 11px !important;
+        padding-inline-start: 18px !important;
+    }
+
+    aside a, .sidebar a, .Layout > nav a {
+        font-size: 0.97rem !important;
+        letter-spacing: 1.2px !important;
+        padding: 2px 0 !important;
+    }
+}
+
+@media (max-height: 900px) {
+
+    .Layout > nav {
+        padding-block: 8px !important;
+    }
+}
+
+@media (max-height: 780px) {
+
+    aside, .sidebar, .Layout > nav {
+        padding-block: 2px !important;
+    }
+
+    aside a, .sidebar a, .Layout > nav a {
+        font-size: 0.88rem !important;
+        letter-spacing: 0.8px !important;
+    }
+}
+

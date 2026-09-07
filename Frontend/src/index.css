@@ -158,3 +158,30 @@ div.iziToast .iziToast-close:hover {
 .toast-liquid-error .iziToast-icon {
     color: #ff4a4a !important;
 }
+/* ─────────────────────────────────────────────────────────────
+   Shared page title.
+   Until now every page invented its own class (products-main-title,
+   suppliers-main-title, add-supplier-main-title ...), each duplicated in
+   its own css file — which is why pages added later ended up with no
+   title at all. This is the single definition; a page only needs
+   <h2 className="page-main-title">…</h2>
+   ───────────────────────────────────────────────────────────── */
+.page-main-title {
+    text-align: center;
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    background: linear-gradient(135deg, #00ffcc 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 12px rgba(0, 255, 204, 0.5));
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .page-main-title { font-size: 1.6rem; letter-spacing: 2px; }
+}

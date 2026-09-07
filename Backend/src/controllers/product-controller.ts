@@ -14,6 +14,9 @@ class ProductController {
     // Constructor - register routes:
     public constructor() {
         this.router.get("/api/products", this.getAllProducts);
+        // Specific routes MUST be registered before "/:id" — otherwise "/:id" swallows them
+        // ("top-three" is a single segment, so it matches :id and +id becomes NaN).
+        this.router.get("/api/products/top-three", securityMiddleware.verifyLoggedIn, this.getTopThreeProducts);
         this.router.get("/api/products/:id", this.getOneProduct);
         this.router.post("/api/products", securityMiddleware.verifyLoggedIn, this.addProduct);
         this.router.put("/api/products/:id", securityMiddleware.verifyLoggedIn, this.updateProduct);
@@ -23,12 +26,17 @@ class ProductController {
 
     // Get all products: 
     private async getAllProducts(request: Request, response: Response): Promise<void> {
-        console.log("Getting all products...");
         const products = await productService.getAllProducts();
         response.json(products);
     }
 
-    // Get one product: 
+    // Get top three products:
+    private async getTopThreeProducts(request: Request, response: Response): Promise<void> {
+        const products = await productService.getTopThreeProducts();
+        response.json(products);
+    }
+
+    // Get one product:
     private async getOneProduct(request: Request, response: Response): Promise<void> {
         const id = +request.params.id;
         const product = await productService.getOneProduct(id);

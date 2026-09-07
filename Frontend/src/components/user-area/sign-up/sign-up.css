@@ -295,3 +295,10 @@
     .SignUp form input:not([type="checkbox"]) { padding: 5px 10px !important; font-size: 0.85rem; }
     .SignUp form button { padding: 7px !important; font-size: 1.1rem; margin-top: 10px !important; }
 }
+/* ReCAPTCHA widget — spans the whole form width and sits centred like the other rows */
+.SignUp form .captcha-wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin: 6px 0 2px;
+}

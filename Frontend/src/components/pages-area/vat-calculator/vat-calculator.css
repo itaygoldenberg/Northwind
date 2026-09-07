@@ -1,0 +1,238 @@
+/* ═══════════════════════════════════════════════════════════
+   VAT Calculator — same liquid-glass language as the rest of
+   the site, shaped like a pocket calculator.
+   ═══════════════════════════════════════════════════════════ */
+
+.VatCalculator {
+    width: 100%;
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 26px 24px 24px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    isolation: isolate;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+
+    box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.15),
+        0 20px 45px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+
+    font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+    color: #ffffff;
+    text-align: left;
+}
+
+.VatCalculator:hover {
+    transform: translateY(-5px) scale(1.008);
+    border-color: rgba(0, 255, 204, 0.55);
+    box-shadow: 0 12px 35px rgba(0, 255, 204, 0.12), 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* the shine that sweeps across every card on this site */
+.VatCalculator::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+    transform: translateX(-350%) skewX(-25deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.VatCalculator:hover::before {
+    transform: translateX(350%) skewX(-25deg);
+}
+
+/* ─── title ─── */
+.VatCalculator > p {
+    margin: 0 0 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #00ffcc 0%, #c7faef 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ═══ the display ═══
+   flex row, so the 18% chip can never sit on top of the number
+   — that was the overlap bug with long amounts.               */
+.VatCalculator .screen {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 16px 16px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+
+    background: linear-gradient(180deg, rgba(0, 26, 21, 0.85), rgba(2, 12, 10, 0.7));
+    border: 1px solid rgba(0, 255, 204, 0.22);
+    box-shadow:
+        inset 0 2px 16px rgba(0, 0, 0, 0.6),
+        inset 0 0 0 1px rgba(0, 255, 204, 0.05),
+        0 0 24px rgba(0, 255, 204, 0.06);
+}
+
+.VatCalculator .screen .rate {
+    flex: none;
+    align-self: flex-start;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(0, 255, 204, 0.12);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #8ff5e2;
+}
+
+/* the VAT read-out — one element, because the test looks for "VAT: 18" whole */
+.VatCalculator .screen > span:not(.rate) {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    font-family: Consolas, 'SF Mono', monospace;
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.35;
+    white-space: nowrap;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+
+    color: #00ffcc;
+    text-shadow: 0 0 14px rgba(0, 255, 204, 0.45);
+
+    scrollbar-width: none;
+}
+
+.VatCalculator .screen > span:not(.rate)::-webkit-scrollbar {
+    height: 0;
+}
+
+/* ═══ the keys area ═══ */
+.VatCalculator .keys {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.VatCalculator .field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.VatCalculator label {
+    flex: none;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #9fc4bb;
+}
+
+.VatCalculator input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 14px;
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+    font-family: Consolas, 'SF Mono', monospace;
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+    color: #ffffff;
+    text-align: right;
+    outline: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.VatCalculator input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 255, 204, 0.55);
+    box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.12);
+}
+
+/* hide the number spinners so it reads like a calculator keypad */
+.VatCalculator input::-webkit-outer-spin-button,
+.VatCalculator input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.VatCalculator input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* ═══ the Clear key — identical to the Clear in Register ═══ */
+.VatCalculator button {
+    width: 100%;
+    padding: 10px !important;
+    margin-top: 4px !important;
+    border-radius: 10px;
+
+    font-family: 'Inter', 'SF Pro Display', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.VatCalculator button:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #ff4a4a 100%) !important;
+    color: #111111 !important;
+    border-color: #ff4a4a !important;
+    box-shadow: 0 4px 15px rgba(255, 74, 74, 0.6) !important;
+}
+
+.VatCalculator button:active {
+    transform: scale(0.98);
+}
+
+/* ─── narrow screens ─── */
+@media (max-width: 430px) {
+
+    .VatCalculator {
+        max-width: 100%;
+        margin: 24px 12px;
+    }
+
+    .VatCalculator .field {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .VatCalculator label {
+        text-align: center;
+    }
+}

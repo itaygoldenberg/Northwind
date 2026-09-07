@@ -30,6 +30,7 @@
     height: auto;
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-flow: row dense;
     gap: 6px 12px !important;
     padding: 18px 22px !important;
     position: relative;
@@ -80,8 +81,19 @@
     line-height: 1.2 !important;
 }
 
-.AddSupplier form label:nth-of-type(1) { grid-row: 1; grid-column: span 2; }
-.AddSupplier form input:nth-of-type(1) { grid-row: 2; grid-column: span 2; }
+/* Auto-flow layout: every label and input takes a full row, in DOM order.
+   Nothing is pinned to a fixed grid-row anymore, so adding or removing a field
+   can never knock the rest of the form out of place again. */
+.AddSupplier form label,
+.AddSupplier form input { grid-column: span 2; }
+
+/* The only pair that shares one row: Country + City — the two shortest values.
+   The DOM order is label,input,label,input, so the pair only lines up with dense
+   packing (see grid-auto-flow on the form); without it each one gets its own row. */
+.AddSupplier form label:nth-of-type(4),
+.AddSupplier form input:nth-of-type(4) { grid-column: 1; }
+.AddSupplier form label:nth-of-type(5),
+.AddSupplier form input:nth-of-type(5) { grid-column: 2; }
 
 .AddSupplier form label:nth-of-type(1) {
     font-family: 'Inter', 'SF Pro Display', '-apple-system', sans-serif;
@@ -102,10 +114,6 @@
     filter: drop-shadow(0 2px 8px rgba(0, 255, 204, 0.5));
 }
 
-.AddSupplier form label:nth-of-type(2) { grid-row: 3; grid-column: 1; margin-top: 3px !important; }
-.AddSupplier form label:nth-of-type(3) { grid-row: 3; grid-column: 2; margin-top: 3px !important; }
-.AddSupplier form input:nth-of-type(2) { grid-row: 4; grid-column: 1; }
-.AddSupplier form input:nth-of-type(3) { grid-row: 4; grid-column: 2; }
 
 .AddSupplier form label:nth-of-type(2) {
     font-family: 'Inter', 'SF Pro Text', sans-serif;
@@ -138,8 +146,6 @@
     text-shadow: 0 0 6px rgba(233, 213, 255, 0.4);
 }
 
-.AddSupplier form label:nth-of-type(4) { grid-row: 5; grid-column: span 2; margin-top: 3px !important; }
-.AddSupplier form input:nth-of-type(4) { grid-row: 6; grid-column: span 2; }
 
 .AddSupplier form label:nth-of-type(4) {
     font-family: 'Inter', 'SF Pro Text', sans-serif;
@@ -157,8 +163,6 @@
     text-shadow: 0 0 6px rgba(203, 213, 225, 0.3);
 }
 
-.AddSupplier form label:nth-of-type(5) { grid-row: 7; grid-column: span 2; margin-top: 3px !important; }
-.AddSupplier form input:nth-of-type(5) { grid-row: 8; grid-column: span 2; }
 
 .AddSupplier form label:nth-of-type(5) {
     font-family: 'Inter', 'SF Pro Text', sans-serif;
@@ -176,16 +180,22 @@
     text-shadow: 0 0 6px rgba(224, 242, 254, 0.3);
 }
 
-.AddSupplier form label:nth-of-type(6) { grid-row: 9; grid-column: span 2; margin-top: 3px !important; }
-.AddSupplier form input[type="file"] { grid-row: 10; grid-column: span 2; }
 
-.AddSupplier form label:nth-of-type(6) {
+/* Address, Phone and any field added after them — n+6 so a new field is never left unstyled */
+.AddSupplier form label:nth-of-type(n+6) {
     font-family: 'Inter', 'SF Pro Text', sans-serif;
     font-size: 0.85rem !important;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #cbd5e1;
+    text-shadow: 0 1px 2px rgba(203, 213, 225, 0.1);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.AddSupplier form:hover label:nth-of-type(n+6) {
+    color: #f1f5f9;
+    text-shadow: 0 0 6px rgba(241, 245, 249, 0.3);
 }
 
 .AddSupplier form input {
@@ -232,7 +242,6 @@
 }
 
 .AddSupplier form img {
-    grid-row: 11;
     grid-column: span 2;
     width: auto !important;
     max-width: 100% !important;
@@ -245,7 +254,6 @@
 }
 
 .AddSupplier form button {
-    grid-row: 12;
     grid-column: span 2;
     width: 100%;
     padding: 9px !important;

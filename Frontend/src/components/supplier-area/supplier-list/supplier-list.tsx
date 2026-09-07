@@ -8,9 +8,9 @@ import { AppState } from "../../../redux/app-state";
 import { useNavigate } from "react-router-dom";
 
 
- async  function deleteSupplier(id: number) {
+ async  function deleteSupplier(_id: string) {
     try {
-       await supplierService.deleteSupplier(id)
+       await supplierService.deleteSupplier(_id)
         notify.success("Supplier has been deleted.")
     }
     catch (err) {
@@ -45,29 +45,30 @@ const suppliers = useSelector<AppState, SupplierModel[]>(state =>
         <tr>
             
             <th>Company</th>
+            <th>Contact</th>
             <th>Country</th>
             <th>City</th>
             <th>Address</th>
             <th>Phone</th>
-            <th>Image</th>
             <th>Edit</th>
             <th>Delete</th>
-           
+
         </tr>
     </thead>
     <tbody>
         {suppliers.map(s => (
-            
-            <tr key={s.id}>
-                <td>{s.company}</td>
-                <td>{s.country}</td>
+
+            <tr key={s._id}>
+                <td>{s.companyName}</td>
+                <td>{s.contactName}</td>
+                {/* country is a populated OBJECT — printing it directly crashes React */}
+                <td>{s.country?.name}</td>
                 <td>{s.city}</td>
                 <td>{s.address}</td>
                 <td>{s.phone}</td>
-                <td><img src={s.imageUrl} alt={s.company} /></td>
 
-                <td><button onClick={() => navigate("/suppliers/edit/" + s.id)}>📝 Edit</button></td>
-                <td><button onClick={() => deleteSupplier(s.id)}>🗑️ Delete</button></td>
+                <td><button onClick={() => navigate("/suppliers/edit/" + s._id)}>📝 Edit</button></td>
+                <td><button onClick={() => deleteSupplier(s._id)}>🗑️ Delete</button></td>
             </tr>
         ))}
     </tbody>

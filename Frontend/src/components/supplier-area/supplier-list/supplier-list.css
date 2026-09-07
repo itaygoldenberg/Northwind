@@ -45,10 +45,16 @@
     white-space: nowrap;
 }
 
-/* Width Allocation Safeguards to ensure proportional balancing across all devices */
-.SupplierList th:first-child, .SupplierList td:first-child { width: 8% !important; } /* Avatar/ID */
-.SupplierList th:last-child, .SupplierList td:last-child { width: 12% !important; } /* Delete Btn */
-.SupplierList th:nth-last-child(2), .SupplierList td:nth-last-child(2) { width: 12% !important; } /* Edit Btn */
+/* Width Allocation — one rule per column, in table order.
+   The first column is Company (the longest text), so it gets the widest share. */
+.SupplierList th:nth-child(1), .SupplierList td:nth-child(1) { width: 18% !important; } /* Company */
+.SupplierList th:nth-child(2), .SupplierList td:nth-child(2) { width: 14% !important; } /* Contact */
+.SupplierList th:nth-child(3), .SupplierList td:nth-child(3) { width: 10% !important; } /* Country */
+.SupplierList th:nth-child(4), .SupplierList td:nth-child(4) { width: 10% !important; } /* City    */
+.SupplierList th:nth-child(5), .SupplierList td:nth-child(5) { width: 18% !important; } /* Address */
+.SupplierList th:nth-child(6), .SupplierList td:nth-child(6) { width: 13% !important; } /* Phone   */
+.SupplierList th:nth-child(7), .SupplierList td:nth-child(7) { width: 8%  !important; } /* Edit    */
+.SupplierList th:nth-child(8), .SupplierList td:nth-child(8) { width: 9%  !important; } /* Delete  */
 
 /* Floating Glass Row Transitions */
 .SupplierList tbody tr {
@@ -73,9 +79,11 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0px rgba(255, 255, 255, 0.1) !important;
     vertical-align: middle;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; /* Keeps records bound cleanly side-by-side without breaking into chaotic multiple lines */
+    /* Wrap instead of clipping: an ellipsis on a company name hides the very thing the column is for.
+       overflow-wrap breaks only words that are genuinely too long for the column. */
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
     transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease !important;
 }
 

@@ -9,7 +9,9 @@ const UserSchema = z.object({
     lastName: z.string().min(2).max(50),
     email: z.email().min(2).max(100),
     password: z.string().min(2).max(100),
-    roleId: z.enum(Role).optional()
+    roleId: z.enum(Role).optional(),
+    // Real Google v2 tokens are long, and Google may lengthen them without notice — 2000 is too tight.
+    captchaToken: z.string().min(1).max(5000)
 });
 
 // User Interface (I = Interface):
@@ -24,6 +26,7 @@ export class UserModel implements IUserModel {
     public email: string;
     public password: string;
     public roleId: number;
+    public captchaToken: string;
 
     public constructor(user: UserModel) {
         this.id = user.id;
@@ -32,6 +35,7 @@ export class UserModel implements IUserModel {
         this.email = user.email;
         this.password = user.password;
         this.roleId = user.roleId;
+        this.captchaToken = user.captchaToken;
     }
 
     public validate(): void {

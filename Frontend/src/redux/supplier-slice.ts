@@ -13,7 +13,7 @@ function addSupplier(currentState: SupplierModel[], action: PayloadAction<Suppli
 function updateSupplier(currentState: SupplierModel[], action: PayloadAction<SupplierModel>): SupplierModel[] {
     const supplierToUpdate = action.payload; // Take supplier to update.
     const newState = [...currentState]; // Duplicate currentState into newState.
-    const index = newState.findIndex(p => p.id === supplierToUpdate.id); // Find the index of the supplier to update.
+    const index = newState.findIndex(p => p._id === supplierToUpdate._id); // Find the index of the supplier to update.
     if(index >= 0) {
         newState[index] = supplierToUpdate; // Update that supplier.
     }
@@ -21,10 +21,10 @@ function updateSupplier(currentState: SupplierModel[], action: PayloadAction<Sup
 }
 
 // Reducer - delete supplier: 
-function deleteSupplier(currentState: SupplierModel[], action: PayloadAction<number>): SupplierModel[] {
-    const idToDelete = action.payload; // Take supplier id to delete.
+function deleteSupplier(currentState: SupplierModel[], action: PayloadAction<string>): SupplierModel[] {
+    const idToDelete = action.payload; // Take supplier _id to delete (a string in MongoDB).
     const newState = [...currentState]; // Duplicate currentState into newState.
-    const index = newState.findIndex(p => p.id === idToDelete); // Find the index of the supplier to delete.
+    const index = newState.findIndex(p => p._id === idToDelete); // Find the index of the supplier to delete.
     if(index >= 0) {
         newState.splice(index, 1); // Delete that supplier.
     }

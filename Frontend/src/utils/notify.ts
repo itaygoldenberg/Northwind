@@ -1,5 +1,5 @@
-import iziToast, { IziToastSettings } from "iziToast";
-import "iziToast/dist/css/iziToast.css";
+import iziToast, { IziToastSettings } from "izitoast";
+import "izitoast/dist/css/iziToast.css";
 
 class Notify {
 

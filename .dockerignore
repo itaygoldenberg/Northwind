@@ -1,0 +1,7 @@
+**/node_modules
+**/Dockerfile
+**/Kittens.postman_collection.json
+compose.yaml
+.dockerignore
+.git
+.gitignore

@@ -8,19 +8,11 @@ import { notify } from "../../../utils/notify";
 
 export function AddSupplier() {
 
-    const { register, handleSubmit, watch } = useForm<SupplierModel>();
+    const { register, handleSubmit } = useForm<SupplierModel>();
     const navigate = useNavigate();
-    
-const imageFileList = watch("image") as unknown as FileList;
-const previewSrc = imageFileList && imageFileList.length > 0 ? URL.createObjectURL(imageFileList[0]) : "";
 
-
-    async function send(supplier:SupplierModel) {
+    async function send(supplier: SupplierModel) {
         try {
-            // Extract the single File from the FileList back into supplier.image:
-            supplier.image = (supplier.image as unknown as FileList)[0];
-            
-
             // Send:
             await supplierService.addSupplier(supplier);
             notify.success("Supplier has been added.");
@@ -40,10 +32,16 @@ const previewSrc = imageFileList && imageFileList.length > 0 ? URL.createObjectU
             <form onSubmit={handleSubmit(send)}>
 
                 <label>Company</label>
-                <input type="text" {...register("company")} required minLength={2} maxLength={40} />
+                <input type="text" {...register("companyName")} required minLength={2} maxLength={100} />
+
+                <label>Contact Name</label>
+                <input type="text" {...register("contactName")} required minLength={2} maxLength={40} />
+
+                <label>Contact Title</label>
+                <input type="text" {...register("contactTitle")} required minLength={2} maxLength={40} />
 
                 <label>Country</label>
-                <input type="text" {...register("country")} required minLength={2} maxLength={15} />
+                <input type="text" {...register("countryName")} required minLength={2} maxLength={50} />
 
                 <label>City</label>
                 <input type="text" {...register("city")} required minLength={2} maxLength={15} />
@@ -53,13 +51,6 @@ const previewSrc = imageFileList && imageFileList.length > 0 ? URL.createObjectU
 
                 <label>Phone</label>
                 <input type="text" {...register("phone")} required minLength={7} maxLength={24} />
-
-            
-                <label>Image</label>
-                <input type="file" accept="image/*" {...register("image")} required />
-                
-                {previewSrc && <img src={previewSrc} alt="preview" className="preview" />}
-                 
 
                 <button> ➕ Add</button>
 

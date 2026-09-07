@@ -1,6 +1,5 @@
 import axios from "axios";
 import { appConfig } from "../utils/app-config";
-import { formUtil } from "../utils/form-util";
 import { store } from "../redux/store";
 import { SupplierModel } from "../models/supplier-model";
 import { supplierSlice } from "../redux/supplier-slice";
@@ -29,56 +28,56 @@ class SupplierService {
     }
  
     // Fetch one supplier:
-    public async getOneSupplier(id: number): Promise<SupplierModel> {
- 
+    public async getOneSupplier(_id: string): Promise<SupplierModel> {
+
         // If supplier already exists in our global state - return it:
-        const supplier = store.getState().suppliers.find(p => p.id === id);
+        const supplier = store.getState().suppliers.find(p => p._id === _id);
         if (supplier) {
             return supplier;
         }
- 
+
         // We don't have that supplier in global state - get it from backend:
-        const response = await axios.get<SupplierModel>(appConfig.suppliersUrl + "/" + id);
+        const response = await axios.get<SupplierModel>(appConfig.suppliersUrl + "/" + _id);
         const dbSupplier = response.data;
- 
+
         // Return backend supplier:
         return dbSupplier;
     }
- 
+
     // Add supplier:
     public async addSupplier(supplier: SupplierModel): Promise<void> {
- 
-        // Send supplier to backend:
-        const response = await axios.post<SupplierModel>(appConfig.suppliersUrl, formUtil.toSupplierFormData(supplier));
+
+        // Suppliers have no image, so we send plain JSON and not FormData:
+        const response = await axios.post<SupplierModel>(appConfig.suppliersUrl, supplier);
         const dbSupplier = response.data;
- 
+
         // Add supplier to global state:
         const action = supplierSlice.actions.addSupplier(dbSupplier);
         store.dispatch(action);
     }
- 
+
     // Update supplier:
     public async updateSupplier(supplier: SupplierModel): Promise<void> {
- 
+
         // Send supplier to backend:
-        const response = await axios.put<SupplierModel>(appConfig.suppliersUrl + "/" + supplier.id, formUtil.toSupplierFormData(supplier));
+        const response = await axios.put<SupplierModel>(appConfig.suppliersUrl + "/" + supplier._id, supplier);
         const dbSupplier = response.data;
- 
+
         // Update supplier in global state:
         const action = supplierSlice.actions.updateSupplier(dbSupplier);
         store.dispatch(action);
     }
- 
+
     // Delete supplier:
-    public async deleteSupplier(id: number): Promise<void> {
- 
+    public async deleteSupplier(_id: string): Promise<void> {
+
         // Delete supplier from backend:
-        await axios.delete(appConfig.suppliersUrl + "/" + id);
- 
-// Delete supplier from global state:
-const action = supplierSlice.actions.deleteSupplier(id);
-store.dispatch(action);
-}
+        await axios.delete(appConfig.suppliersUrl + "/" + _id);
+
+        // Delete supplier from global state:
+        const action = supplierSlice.actions.deleteSupplier(_id);
+        store.dispatch(action);
+    }
 
 
     } 

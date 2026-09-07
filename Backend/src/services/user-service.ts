@@ -5,14 +5,46 @@ import { cyber } from "../utils/cyber";
 import { CredentialsModel } from "../models/credentials-model";
 import { ClientError } from "../models/client-error";
 import { Role, StatusCode } from "../models/enums";
+import { appConfig } from "../utils/app-config";
+import axios from "axios";
 
 class UserService {
+
+    // Verify CAPTCHA using google api:
+    private async verifyHuman(captchaToken: string): Promise<void> {
+
+        // Create parameters to send to google: 
+        const params = new URLSearchParams();
+        params.append("secret", appConfig.recaptchaSecretKey); // Secret key
+        params.append("response", captchaToken); // Captcha Token (response from google component) 
+
+        // Ask google if user is a human or a bot:
+        const url = "https://www.google.com/recaptcha/api/siteverify";
+        const response = await axios.post(url, params);
+        const success = response.data.success; // true --> user is a human.
+
+        // Throw if BOT:
+        if(!success) {
+
+            // Log WHY google refused. Without this the client just sees "failed CAPTCHA"
+            // and there is no way to tell an unticked box from a mismatched key pair.
+            //   missing-input-response  --> no token was sent (the box was not ticked)
+            //   invalid-input-response  --> the token does not belong to this secret key
+            //   timeout-or-duplicate    --> the token expired (2 min) or was already used
+            //   invalid-input-secret    --> RECAPTCHA_SECRET_KEY is wrong
+            const codes = response.data["error-codes"] || [];
+            console.log("CAPTCHA refused. token length: " + (captchaToken?.length ?? 0) + ", google error-codes: " + JSON.stringify(codes));
+
+            throw new ClientError(StatusCode.Forbidden, "You failed CAPTCHA test.");
+        }
+    }
 
     // Add user:
     public async addUser(user: UserModel): Promise<string> {
 
         // Validation:
         user.validate();
+        await this.verifyHuman(user.captchaToken);
 
         // Set lowest role when registering:
         user.roleId = Role.User;

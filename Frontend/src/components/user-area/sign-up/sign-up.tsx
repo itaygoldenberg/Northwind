@@ -1,7 +1,10 @@
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
+import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom";
 import { UserModel } from "../../../models/user-model";
 import { userService } from "../../../services/user-service";
+import { appConfig } from "../../../utils/app-config";
 import { notify } from "../../../utils/notify";
 import "./sign-up.css";
 
@@ -9,15 +12,20 @@ export function SignUp() {
 
     const { register, handleSubmit } = useForm<UserModel>();
     const navigate = useNavigate();
+    const captchaRef = useRef<ReCAPTCHA>(null);
 
     async function send(user: UserModel) {
         try {
+            // The server requires captchaToken — without it register answers 422:
+            user.captchaToken = captchaRef.current?.getValue() || "";
+
             await userService.register(user);
             notify.success("Welcome " + user.firstName);
             navigate("/home");
         }
-        catch(err: unknown) { 
-            notify.error(err); 
+        catch(err: unknown) {
+            captchaRef.current?.reset(); // The token is single-use — a new one is needed for the next try
+            notify.error(err);
         }
     }
 
@@ -45,8 +53,12 @@ export function SignUp() {
         <label htmlFor="promotions">Send me promotional emails</label>
     </div>
 
+    <div className="captcha-wrapper">
+        <ReCAPTCHA sitekey={appConfig.recaptchaSiteKey} ref={captchaRef} theme="dark" />
+    </div>
+
     <div className="button-group">
-        <button type="submit">Sign In</button>
+        <button type="submit">Register</button>
         <button type="reset">Clear</button>
     </div>
 </form>

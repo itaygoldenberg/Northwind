@@ -23,3 +23,48 @@
         0 0 8px rgba(0, 255, 204, 0.6),
         0 0 15px rgba(0, 255, 204, 0.3) !important;
 }
+/* ═══════════════════════════════════════════════════════════
+   Short screens (14" laptop at 100% zoom).
+   The nav's own gap does nothing here — .Menu is its single
+   child, so the real spacing lives on .Menu itself.
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-height: 900px) {
+
+    .Menu {
+        gap: 11px;
+        padding-top: 10px;
+    }
+
+    .Menu .TotalProducts,
+    .Menu .TotalSuppliers {
+        padding: 8px 12px !important;
+        font-size: 0.88rem !important;
+    }
+
+    .Menu .TotalProducts {
+        margin-top: 10px !important;
+    }
+}
+
+@media (max-height: 780px) {
+
+    .Menu {
+        gap: 9px;
+        padding-top: 2px;
+    }
+
+    .Menu a {
+        padding: 1px 0 !important;
+    }
+
+    .Menu .TotalProducts,
+    .Menu .TotalSuppliers {
+        padding: 3px 12px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .Menu .TotalProducts {
+        margin-top: 6px !important;
+    }
+}

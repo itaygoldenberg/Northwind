@@ -1,5 +1,6 @@
 .EditProduct {
     display: flex;
+    flex-direction: column; /* without this the title lands BESIDE the form instead of above it */
     justify-content: center;
     align-items: center;
     padding: 10px 20px;

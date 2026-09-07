@@ -1,0 +1,120 @@
+name: northwind
+
+# All images and containers:
+services:
+
+  # MySQL container:
+  mysql-service:
+
+    # MySQL image:
+    image: mysql:8
+
+    # Container name:
+    container_name: mysql-container
+
+    # Restart policy:
+    restart: unless-stopped
+
+    # Volumes:
+    volumes:
+      - mysql-volume:/var/lib/mysql
+      - ./Database/MySQL:/docker-entrypoint-initdb.d
+
+    # Environment variables needed by mysql image:
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_USER: JohnBryce
+      MYSQL_PASSWORD: Pa$$w0rd
+      MYSQL_DATABASE: northwind
+      MYSQL_ROOT_PASSWORD: Pa$$w0rd
+
+# --------------------------------------------------------------
+
+  # MongoDB container:
+  mongo-service:
+
+    # MongoDB image:
+    image: mongo:8
+
+    # Container name:
+    container_name: mongo-container
+
+    # Restart policy:
+    restart: unless-stopped
+
+    # Volumes:
+    volumes:
+      - mongo-volume:/data/db
+      - ./Database/MongoDB:/docker-entrypoint-initdb.d
+
+# --------------------------------------------------------------
+
+  # Our backend service:
+  backend-service:
+
+    # Our image:
+    image: northwind-backend
+
+    # Build the image from the following Dockerfile location:
+    build: ./Backend
+
+    # Our container:
+    container_name: northwind-backend
+
+    # Port mapping:
+    ports:
+      - 4000:4000
+
+    # On crash - restart container:
+    restart: unless-stopped
+
+    # Volumes:
+    volumes:
+      - assets-volume:/app/src/assets
+      # The real .env stays on the host and is handed to the container at run time,
+      # read-only. It is excluded from the image by Backend/.dockerignore, so the
+      # secrets are never baked into the image itself.
+      - ./Backend/.env:/app/.env:ro
+
+    # Environment:
+    # These override the .env file: dotenv.config() does not overwrite variables
+    # that already exist in process.env, so whatever is set here wins.
+    environment:
+      MYSQL_HOST: mysql-service # Service name is the name of the vm computer of mysql
+      MYSQL_USER: JohnBryce
+      MYSQL_PASSWORD: Pa$$w0rd
+      MYSQL_DATABASE: northwind
+      MONGODB_CONNECTION_STRING: mongodb://mongo-service:27017/northwind
+
+# -----------------------------------------------------------------------------
+
+# Our frontend service:
+  frontend-service:
+
+    # Our image:
+    image: northwind-frontend
+
+    # Build the image from the following Dockerfile location:
+    build: ./Frontend
+
+    # Our container:
+    container_name: northwind-frontend
+
+    # Port mapping (Vite default port):
+    ports:
+      - 80:5173
+
+    # On crash - restart container:
+    restart: unless-stopped
+
+    # Wait for backend to run first:
+    depends_on:
+      - backend-service
+
+# -----------------------------------------------------------------------------
+
+# List of all our named-volumes:
+volumes:
+  mysql-volume:
+  mongo-volume:
+  assets-volume:

@@ -1,5 +1,6 @@
 .EditSupplier {
     display: flex;
+    flex-direction: column; /* without this the title lands BESIDE the form instead of above it */
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
@@ -13,6 +14,7 @@
     height: auto;
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-flow: row dense;
     gap: 4px 10px !important;
     padding: 14px 20px !important;
     position: relative;
@@ -63,8 +65,16 @@
     line-height: 1.2 !important;
 }
 
-.EditSupplier form label:nth-of-type(1) { grid-row: 1; grid-column: span 2; }
-.EditSupplier form input:nth-of-type(1) { grid-row: 2; grid-column: span 2; }
+/* Auto-flow layout: labels and inputs take a full row in DOM order — nothing pinned to a grid-row. */
+.EditSupplier form label,
+.EditSupplier form input { grid-column: span 2; }
+
+/* The only pair that shares one row: Country + City (needs grid-auto-flow: dense) */
+.EditSupplier form label:nth-of-type(4),
+.EditSupplier form input:nth-of-type(4) { grid-column: 1; }
+.EditSupplier form label:nth-of-type(5),
+.EditSupplier form input:nth-of-type(5) { grid-column: 2; }
+
 
 .EditSupplier form label:nth-of-type(1) {
     font-family: 'Inter', 'SF Pro Display', '-apple-system', sans-serif;
@@ -85,10 +95,6 @@
     filter: drop-shadow(0 2px 8px rgba(0, 255, 204, 0.5));
 }
 
-.EditSupplier form label:nth-of-type(2) { grid-row: 3; grid-column: 1; margin-top: 2px !important; }
-.EditSupplier form label:nth-of-type(3) { grid-row: 3; grid-column: 2; margin-top: 2px !important; }
-.EditSupplier form input:nth-of-type(2) { grid-row: 4; grid-column: 1; }
-.EditSupplier form input:nth-of-type(3) { grid-row: 4; grid-column: 2; }
 
 .EditSupplier form label:nth-of-type(2) {
     font-family: 'Inter', 'SF Pro Text', sans-serif;
@@ -121,8 +127,6 @@
     text-shadow: 0 0 6px rgba(233, 213, 255, 0.4);
 }
 
-.EditSupplier form label:nth-of-type(4) { grid-row: 5; grid-column: span 2; margin-top: 2px !important; }
-.EditSupplier form input:nth-of-type(4) { grid-row: 6; grid-column: span 2; }
 
 .EditSupplier form label:nth-of-type(4) {
     font-family: 'Inter', 'SF Pro Text', sans-serif;
@@ -140,8 +144,6 @@
     text-shadow: 0 0 6px rgba(203, 213, 225, 0.3);
 }
 
-.EditSupplier form label:nth-of-type(5) { grid-row: 7; grid-column: span 2; margin-top: 2px !important; }
-.EditSupplier form input:nth-of-type(5) { grid-row: 8; grid-column: span 2; }
 
 .EditSupplier form label:nth-of-type(5) {
     font-family: 'Inter', 'SF Pro Text', sans-serif;
@@ -152,10 +154,8 @@
     color: #a5f3fc;
 }
 
-.EditSupplier form label:nth-of-type(6) { grid-row: 9; grid-column: span 2; margin-top: 2px !important; }
-.EditSupplier form input[type="file"] { grid-row: 10; grid-column: span 2; }
 
-.EditSupplier form label:nth-of-type(6) {
+.EditSupplier form label:nth-of-type(n+6) {
     font-family: 'Inter', 'SF Pro Text', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
@@ -208,7 +208,6 @@
 }
 
 .EditSupplier form img {
-    grid-row: 11;
     grid-column: span 2;
     width: auto !important;
     max-width: 100% !important;
@@ -221,7 +220,6 @@
 }
 
 .EditSupplier form button {
-    grid-row: 12;
     grid-column: span 2;
     width: 100%;
     padding: 8px !important;

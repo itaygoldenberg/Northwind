@@ -47,6 +47,8 @@ useEffect(() => {
       return (
         <div className="EditEmployee">
 
+            <h2 className="page-main-title">Edit Employee</h2>
+
             <form onSubmit={handleSubmit(send)}>
 
            <label>First Name</label>

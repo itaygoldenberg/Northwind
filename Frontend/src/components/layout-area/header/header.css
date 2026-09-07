@@ -242,3 +242,38 @@ header h1:hover {
         transform-origin: top right;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Title centring on small laptops.
+
+   The old rule offset the header by clamp(120px, 18vw, 240px)
+   to clear the sidebar — but the sidebar is a fixed 240px grid
+   column. At ~1000px wide, 18vw is only 181px, so the centring
+   box started 59px too far left and the title leaned left.
+   The max-width:230px in the 1000px query is what broke it
+   into two lines.
+   ═══════════════════════════════════════════════════════════ */
+
+@media (min-width: 951px) {
+
+    header,
+    .Layout-Header,
+    .app-header {
+        padding-left: 240px !important;   /* exactly the sidebar column */
+    }
+
+    .Header {
+        padding-right: 0 !important;
+    }
+
+    .shop-title,
+    h1,
+    header h1 {
+        /* 2.6vw keeps the title clear of the SIGN UP / SIGN IN block at ~1000px,
+       and is clamped to the original 2.5rem on wide screens */
+        white-space: nowrap !important;
+        max-width: none !important;
+        line-height: 1.1 !important;
+        font-size: clamp(1.4rem, 2.6vw, 2.5rem) !important;
+    }
+}

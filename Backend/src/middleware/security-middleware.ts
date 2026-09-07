@@ -4,6 +4,7 @@ import striptags from "striptags";
 import { ClientError } from "../models/client-error";
 import { StatusCode } from "../models/enums";
 import { cyber } from "../utils/cyber";
+import helmet from "helmet";
 
 class SecurityMiddleware {
 
@@ -58,13 +59,13 @@ class SecurityMiddleware {
     public preventXss(request: Request, response: Response, next: NextFunction): void {
 
         // Run on body object:
-        for(const prop in request.body) {
+        for (const prop in request.body) {
 
             // Take prop value: 
             const value = request.body[prop];
 
             // If string: 
-            if(typeof value === "string") {
+            if (typeof value === "string") {
 
                 // Remove tags:
                 request.body[prop] = striptags(value);
@@ -78,19 +79,29 @@ class SecurityMiddleware {
     // Prevent DoS attack:
     public registerRateLimit(server: Express): void {
 
+        // Any route that serves images. One page shows many of them at once,
+        // so 5 requests per second would block the page from ever loading.
+        const imageRoutes = ["/api/products/images/", "/api/employees/images/"];
+
         // General rate-limit:
         server.use(expressRateLimit({
             windowMs: 1000, // Time window in milliseconds.
-            limit: 5, // How many requests allowed in that window.
-            skip: (request: Request) => request.path.startsWith("/api/products/images/") // Skip when requesting images
+            limit: 20, // How many requests allowed in that window.
+            skip: (request: Request) => imageRoutes.some(route => request.path.startsWith(route)) // Skip when requesting images
         }));
 
         // Images rate-limit:
-        server.use("/api/products/images/", expressRateLimit({ // Only images.
+        imageRoutes.forEach(route => server.use(route, expressRateLimit({ // Only images.
             windowMs: 1000, // Time window in milliseconds.
             limit: 200, // How many requests allowed in that window.
-        }));
+        })));
+    }
 
+    // Use helmet to protect header attacks: 
+    public headerProtection(server: Express): void {
+        server.use(helmet({
+            crossOriginResourcePolicy: { policy: "same-site" } // Enable CORS on images.
+        }));
     }
 
 }

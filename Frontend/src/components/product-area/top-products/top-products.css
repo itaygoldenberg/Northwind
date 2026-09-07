@@ -73,3 +73,9 @@
         margin-bottom: 15px !important;
     }
 }
+
+/* The container is a multi-column grid, so the title would land in the first cell
+   next to a product card. Make it span the whole row. */
+.TopProducts .page-main-title {
+    grid-column: 1 / -1;
+}

@@ -24,7 +24,7 @@ useEffect(() => {
     return (
         <div className="TopProducts">
 
-            <h2>Top Products</h2>
+            <h2 className="page-main-title">Top Products</h2>
 
             {products.map(p => <ProductCard key={p.id} product={p} />)}
 

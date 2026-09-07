@@ -15,6 +15,9 @@ import { Admin } from "../../employee-area/admin/admin";
 import { SupplierList } from "../../supplier-area/supplier-list/supplier-list";
 import { AddSupplier } from "../../supplier-area/add-supplier/add-supplier";
 import { EditSupplier } from "../../supplier-area/edit-supplier/edit-supplier";
+import { Chat } from "../../pages-area/chat/chat";
+import { AskMcp } from "../../pages-area/ask-mcp/ask-mcp";
+import { VatCalculator } from "../../pages-area/vat-calculator/vat-calculator";
 
 const HomeLazy = lazy(() => import("../../pages-area/home/home").then(module => ({ default: module.Home })));
 const ProductListLazy = lazy(() => import("../../product-area/product-list/product-list").then(module => ({ default: module.ProductList })));
@@ -22,7 +25,6 @@ const EmployeeListLazy = lazy(() => import("../../employee-area/employee-list/em
 const AboutLazy = lazy(() => import("../../pages-area/about/about").then(module => ({ default: module.About })));
 
 export function Routing() {
-    
     return (
         <Routes>
 
@@ -40,70 +42,70 @@ export function Routing() {
                 </Suspense>
             } />
 
-            {/* Product details: */}
+            {/* Product details */}
             <Route path="/products/details/:prodId" element={
                 <Suspense fallback={<Spinner />}>
                     <ProductDetails />
                 </Suspense>
             } />
 
-            {/* Add Product: */}
+            {/* Add Product */}
             <Route path="/products/new" element={
                 <Suspense fallback={<Spinner />}>
                     <AddProduct />
                 </Suspense>
             } />
              
-            {/* Top Product: */}
+            {/* Top Product */}
             <Route path="/top-products" element={
                 <Suspense fallback={<Spinner />}>
                     <TopProducts />
                 </Suspense>
             } />
             
-            {/* Edit Product: */}
-           <Route path="/products/edit/:prodId" element={
+            {/* Edit Product */}
+            <Route path="/products/edit/:prodId" element={
                 <Suspense fallback={<Spinner />}>
                     <EditProduct />
                 </Suspense>
             } />
 
-           {/* Suppliers list: */}
-           <Route path="/suppliers" element={
+            {/* Suppliers list */}
+            <Route path="/suppliers" element={
                 <Suspense fallback={<Spinner />}>
                     <SupplierList />
                 </Suspense>
             } />
 
-           {/* Edit supplier: */}
-           <Route path="/suppliers/edit/:supId" element={
+            {/* Edit supplier */}
+            <Route path="/suppliers/edit/:supId" element={
                 <Suspense fallback={<Spinner />}>
                     <EditSupplier />
                 </Suspense>
             } />
 
-            {/* Employee details: */}
+            {/* Employee details */}
             <Route path="/employees/details/:empId" element={
                 <Suspense fallback={<Spinner />}>
                     <EmployeeDetails />
                 </Suspense>
             } />
 
-            {/* Add supplier: */}
-           <Route path="/suppliers/new" element={
+            {/* Add supplier */}
+            <Route path="/suppliers/new" element={
                 <Suspense fallback={<Spinner />}>
                     <AddSupplier />
                 </Suspense>
             } />
 
-            {/* Add Employee: */}
+            {/* Add Employee */}
             <Route path="/employees/new" element={
                 <Suspense fallback={<Spinner />}>
                     <AddEmployee />
                 </Suspense>
             } />
 
-            {/* Edit Employee: */}
+            {/* Edit Employee */}
             <Route path="/employees/edit/:empId" element={
                 <Suspense fallback={<Spinner />}>
                     <EditEmployee />
@@ -116,35 +118,54 @@ export function Routing() {
                 </Suspense>
             } />
 
+            {/* VAT Calculator: */}
+
+            <Route path="/vat" element={<VatCalculator />} />
+
+
             <Route path="/about" element={
                 <Suspense fallback={<Spinner />}>
                     <AboutLazy />
                 </Suspense>
             } />
 
-           {/* Sign up: */}
-         <Route path="/signup" element={
+            {/* Chat */}
+            <Route path="/chat" element={
+                <Suspense fallback={<Spinner />}>
+                    <Chat />
+                </Suspense>
+            } />
+
+            {/* Ask MCP */}
+            <Route path="/ask-mcp" element={
+                <Suspense fallback={<Spinner />}>
+                    <AskMcp />
+                </Suspense>
+            } />
+
+            {/* Sign up */}
+            <Route path="/signup" element={
                 <Suspense fallback={<Spinner />}>
                     <SignUp />
                 </Suspense>
             } />
          
-           {/* Sign in: */}
-         <Route path="/signin" element={
+            {/* Sign in */}
+            <Route path="/signin" element={
                 <Suspense fallback={<Spinner />}>
                     <SignIn />
                 </Suspense>
             } />
 
-           {/* Admin: */}
-         <Route path="/admin" element={
+            {/* Admin */}
+            <Route path="/admin" element={
                 <Suspense fallback={<Spinner />}>
                     <Admin />
                 </Suspense>
             } />
 
-         {/* Page not found: */}
-         <Route path="*" element={
+            {/* Page not found */}
+            <Route path="*" element={
                 <Suspense fallback={<Spinner />}>
                     <Page404 />
                 </Suspense>
@@ -153,7 +174,6 @@ export function Routing() {
         </Routes>
     );
 }
-
 // import { Navigate, Route, Routes } from "react-router-dom";
 // import { Home } from "../../pages-area/home/home";
 // import { ProductList } from "../../product-area/product-list/product-list";

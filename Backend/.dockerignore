@@ -1,0 +1,29 @@
+# Docker reads this file from the build context, which is ./Backend
+# (compose.yaml says `build: ./Backend`), so the .dockerignore at the
+# repo root does NOT apply here - this file is the one that counts.
+
+# Built on the host for Windows - the image runs Alpine Linux and
+# rebuilds them itself with `npm install`. Copying them in would
+# overwrite the correct ones with binaries that cannot run.
+node_modules
+
+# Secrets. They are mounted at runtime from the host instead,
+# so they never become part of the image.
+.env
+.env.*
+
+# Git metadata is useless inside the image
+.git
+.gitignore
+
+# Compile output - the image runs the TypeScript directly through tsx
+build
+dist
+
+# Docker's own files
+Dockerfile
+.dockerignore
+
+# Noise
+*.log
+npm-debug.log*

@@ -23,6 +23,20 @@ class ProductService {
         return products;
     }
 
+    // Get the three products with the largest stock:
+    public async getTopThreeProducts(): Promise<ProductModel[]> {
+
+        // Create SQL:
+        const sql = "select *, concat(?, imageName) as imageUrl from products order by stock desc limit 3";
+        const values = [appConfig.productImagesBaseUrl];
+
+        // Execute:
+        const products = await dal.execute(sql, values) as ProductModel[];
+
+        // Return:
+        return products;
+    }
+
     // Get one product:
     public async getOneProduct(id: number): Promise<ProductModel> {
 

@@ -10,31 +10,22 @@ import { notify } from "../../../utils/notify";
 
 export function EditSupplier() {
 
-    const { register, handleSubmit , reset , watch } = useForm<SupplierModel>();
+    const { register, handleSubmit , reset } = useForm<SupplierModel>();
     const navigate = useNavigate();
     const params = useParams();
-    const id = Number(params.supId);
-
-
-
-const imageFileList = watch("image") as unknown as FileList;
-const existingImageUrl = watch("imageUrl")
-const previewSrc = imageFileList && imageFileList.length > 0 ? URL.createObjectURL(imageFileList[0]) : existingImageUrl;
+    const _id = params.supId!; // MongoDB _id is a string — do NOT wrap it in Number()
 
 // Init supplier details in the form fields:
 useEffect(() => {
-    supplierService.getOneSupplier(id)
-        .then(dbSupplier => reset(dbSupplier))
+    supplierService.getOneSupplier(_id)
+        .then(dbSupplier => reset({ ...dbSupplier, countryName: dbSupplier.country?.name }))
         .catch(err => notify.error(err));
 }, []);
 
     async function send(supplier: SupplierModel) {
         try {
 
-       supplier.id = id;
-        if(supplier.image) {
-            supplier.image = (supplier.image as unknown as FileList)[0];
-        }
+        supplier._id = _id;
         await supplierService.updateSupplier(supplier);
         notify.success("Supplier has been updated.");
         navigate("/suppliers");
@@ -49,13 +40,21 @@ useEffect(() => {
       return (
         <div className="EditSupplier">
 
+            <h2 className="page-main-title">Edit Supplier</h2>
+
             <form onSubmit={handleSubmit(send)}>
 
                <label>Company</label>
-                <input type="text" {...register("company")} required minLength={2} maxLength={40} />
+                <input type="text" {...register("companyName")} required minLength={2} maxLength={100} />
+
+                <label>Contact Name</label>
+                <input type="text" {...register("contactName")} required minLength={2} maxLength={40} />
+
+                <label>Contact Title</label>
+                <input type="text" {...register("contactTitle")} required minLength={2} maxLength={40} />
 
                 <label>Country</label>
-                <input type="text" {...register("country")} required minLength={2} maxLength={15} />
+                <input type="text" {...register("countryName")} required minLength={2} maxLength={50} />
 
                 <label>City</label>
                 <input type="text" {...register("city")} required minLength={2} maxLength={15} />
@@ -65,14 +64,6 @@ useEffect(() => {
 
                 <label>Phone</label>
                 <input type="text" {...register("phone")} required minLength={7} maxLength={24} />
-
-
-                <label>Image</label>
-                <input type="file" accept="image/*" {...register("image")}  />
-                 
-                {previewSrc && <img src={previewSrc} alt="preview" className="preview" />}
-                 
-
 
                 <button> 📝 Update</button>
 

@@ -227,7 +227,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"firstName\": \"Marge\",\r\n    \"lastName\": \"Simpson\",\r\n    \"email\": \"marge@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"roleId\": 2\r\n}\r\n",
+              "raw": "{\r\n    \"firstName\": \"Moishe\",\r\n    \"lastName\": \"Simpson\",\r\n    \"email\": \"moishe@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"roleId\": 1\r\n}\r\n",
               "options": {
                 "raw": {
                   "language": "json"
@@ -298,6 +298,264 @@
               "path": [
                 "api",
                 "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Suppliers",
+      "item": [
+        {
+          "name": "Get All Suppliers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/suppliers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "suppliers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get One Supplier",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/suppliers/5e91e29b9c08fc560ce2cf90",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "suppliers",
+                "5e91e29b9c08fc560ce2cf90"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Supplier",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"companyName\": \"JB2\",\r\n    \"contactName\": \"Bart\",\r\n    \"contactTitle\": \"Sales\",\r\n    \"city\": \"London\",\r\n    \"address\": \"49 Gilbert St.\",\r\n    \"phone\": \"0528965874\",\r\n    \"fax\": null,\r\n    \"countryId\": \"695a7a281d9fc30cc2d96ef7\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/suppliers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "suppliers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Supplier",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"companyName\": \"John Bryce!\",\r\n    \"contactName\": \"Bart\",\r\n    \"contactTitle\": \"Sales\",\r\n    \"city\": \"London\",\r\n    \"address\": \"49 Gilbert St.\",\r\n    \"phone\": \"0528965874\",\r\n    \"fax\": null,\r\n    \"countryId\": \"695a7a281d9fc30cc2d96ef7\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/suppliers/6a7993142deb41d69ce8f6d9",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "suppliers",
+                "6a7993142deb41d69ce8f6d9"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Supplier",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/suppliers/6a7991fa7b915b125c362aee",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "suppliers",
+                "6a7991fa7b915b125c362aee"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Some Suppliers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/some-suppliers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "some-suppliers"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "item": [
+        {
+          "name": "Get All Sales",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/sales",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "sales"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get One Sale",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/sales/688a02b5aee15b0db4685981",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "sales",
+                "688a02b5aee15b0db4685981"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Sale",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"details\": \"New and amazing sale!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/sales",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "sales"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "RAG",
+      "item": [
+        {
+          "name": "Retrieve",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"question\": \"How to calculate shipping fees?\",\r\n    \"topResultsCount\": 5\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/ask",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "ask"
               ]
             }
           },

@@ -1,6 +1,5 @@
 import { ProductModel } from "../models/product-model";
 import { EmployeeModel } from "../models/employee-model";
-import { SupplierModel } from "../models/supplier-model";
 
 
 class FormUtil {
@@ -45,27 +44,7 @@ if(employee.image){
 
 
     
-//Suppliers
- public toSupplierFormData(supplier: SupplierModel): FormData {
- const supplierFormData= new FormData();
-
-      supplierFormData.append("id", supplier.id.toString());
-      supplierFormData.append("company", supplier.company);
-      supplierFormData.append("country", supplier.country);
-      supplierFormData.append("city", supplier.city);
-      supplierFormData.append("address", supplier.address);
-      supplierFormData.append("phone", supplier.phone);
-     
-
-
-if(supplier.image){
-    supplierFormData.append("image" , supplier.image);
-}
-
- return supplierFormData;
- 
- }
-
+// Suppliers have no image, so they are sent as plain JSON — no FormData needed here.
 
 }
 
