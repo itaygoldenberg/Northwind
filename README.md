@@ -92,7 +92,7 @@ Integration tests drive the real Express server through Supertest and assert sta
 ## Technology
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=react,ts,redux,vite,nodejs,express,mysql,mongodb,docker,socketio,materialui" alt="Northwind Commerce Platform primary technology logos" />
+  <img src="https://skillicons.dev/icons?i=react,ts,redux,vite,nodejs,express,mysql,mongodb,docker,materialui" alt="Northwind Commerce Platform primary technology logos" />
 </p>
 
 | Technology | Role |
