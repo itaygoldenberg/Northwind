@@ -8,6 +8,15 @@ import { useState } from "react";
 
 let socket: Socket = null!;
 
+// crypto.randomUUID is only defined in a secure context - HTTPS or localhost.
+// Over plain http on a server address it is missing, and calling it threw before
+// the message was ever emitted. getRandomValues is present in both cases.
+function newMessageId(): string {
+    if (typeof crypto.randomUUID === "function") return crypto.randomUUID();
+    const bytes = crypto.getRandomValues(new Uint8Array(16));
+    return Array.from(bytes, b => b.toString(16).padStart(2, "0")).join("");
+}
+
 // Palette for the nickname colour. A native <input type="color"> opens an
 // operating-system dialog that CSS cannot reach, so we build our own swatches.
 const COLORS = ["#00ffcc", "#38bdf8", "#a78bfa", "#f472b6", "#fbbf24", "#f87171", "#4ade80", "#e2e8f0"];
@@ -48,7 +57,7 @@ export function Chat() {
 
     // Send message to server: 
     function send(chat: ChatModel): void {
-        chat.id = crypto.randomUUID();
+        chat.id = newMessageId();
         socket.emit("client-message", chat);
 
         resetField("message"); 
