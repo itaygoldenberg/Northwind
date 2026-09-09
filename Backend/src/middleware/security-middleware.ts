@@ -100,7 +100,11 @@ class SecurityMiddleware {
     // Use helmet to protect header attacks: 
     public headerProtection(server: Express): void {
         server.use(helmet({
-            crossOriginResourcePolicy: { policy: "same-site" } // Enable CORS on images.
+            // The client is served from a different port, and on a bare IP the browser
+            // does not treat that as the same site - "same-site" made every image fail
+            // with ERR_BLOCKED_BY_RESPONSE.NotSameSite once deployed. These images are
+            // public and already served without a token, so cross-origin is correct here.
+            crossOriginResourcePolicy: { policy: "cross-origin" }
         }));
     }
 
