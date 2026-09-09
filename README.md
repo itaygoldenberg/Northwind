@@ -138,7 +138,7 @@ Northwind/
 |   `-- .dockerignore         Keeps .env and node_modules out of the image
 |-- Database/
 |   |-- MySQL/northwind.sql   Relational schema and seed data
-|   `-- MongoDB/              bson export and its import script
+|   `-- MongoDB/              bson export, its import script and a country migration
 |-- docs/                     README-only visual assets
 |-- compose.yaml              Four-service Docker stack
 `-- README.md                 Project documentation
@@ -215,7 +215,7 @@ Sign in with one of the seeded demo accounts, for example `bart@gmail.com` / `12
 
 Their passwords are stored in `Database/MySQL/northwind.sql` as HMAC hashes of a **public demo salt**, so `compose.yaml` sets `HASH_SALT` to that same demo value for the container. The private salt in `Backend/.env` is what a local run uses, and it never leaves the machine. Use your own salt outside the demo.
 
-Both database images run every script placed in their initialisation folder, but only on the first start, while the data volume is still empty. To reload the seed data after changing a dump, remove the volumes first:
+Both database images run every script placed in their initialisation folder, but only on the first start, while the data volume is still empty. MongoDB runs `import.sh` and then `migrate-countries.js`, which lifts each supplier's country from a plain string into a countries document plus a `countryId`, the shape `SupplierSchema` populates from. To reload the seed data after changing a dump, remove the volumes first:
 
 ```bash
 docker compose down -v
