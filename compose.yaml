@@ -140,6 +140,12 @@ services:
     ports:
       - 5173:5173
  
+    # Volumes:
+    volumes:
+      # Vite reads .env from the project root at start up. It is excluded from
+      # the image by Frontend/.dockerignore, so it is mounted here read-only.
+      - ./Frontend/.env:/app/.env:ro
+ 
     # Restart policy:
     restart: unless-stopped
  

@@ -237,7 +237,7 @@ npm test
 | POST | `/api/register` | Public |
 | POST | `/api/login` | Public |
 | GET | `/api/products` | Public |
-| GET | `/api/products/top-three` | Public |
+| GET | `/api/products/top-three` | Signed-in user |
 | GET | `/api/products/:id` | Public |
 | POST | `/api/products` | Signed-in user |
 | PUT | `/api/products/:id` | Signed-in user |
