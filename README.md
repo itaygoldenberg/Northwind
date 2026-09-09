@@ -164,6 +164,7 @@ MONGODB_CONNECTION_STRING=mongodb://localhost:27017/northwind
 JWT_SECRET=replace_with_a_long_random_secret
 HASH_SALT=replace_with_a_private_salt
 PRODUCT_IMAGES_BASE_URL=http://localhost:4000/api/products/images/
+EMPLOYEE_IMAGES_BASE_URL=http://localhost:4000/api/employees/images/
 RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
 OPENAI_API_KEY=your_openai_api_key
 ```
@@ -274,6 +275,7 @@ npm test
 - The seeded users only sign in while `HASH_SALT` matches the demo salt the dump was hashed with. Point the salt at your own value and register a fresh account instead.
 - Any Vite variable prefixed with `VITE_` is bundled into the client and readable by anyone who opens the browser tools. Keep provider secrets on the server and reach them through the API.
 - The MCP server has to be reachable from the internet for a hosted model to call it, so a tunnel is needed while developing locally.
+- When the API is not on localhost, point `PRODUCT_IMAGES_BASE_URL`, `EMPLOYEE_IMAGES_BASE_URL` and the client's `VITE_SERVER_URL` at the host address. They are the addresses a visitor's browser fetches, so `localhost` there means the visitor's own machine.
 - Review CORS, uploads, rate limits and database privileges before public deployment.
 
 ## Author

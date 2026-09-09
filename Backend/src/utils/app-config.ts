@@ -15,8 +15,9 @@ class AppConfig {
     public readonly mysqlDatabase = process.env.MYSQL_DATABASE!;
     public readonly jwtSecret = process.env.JWT_SECRET!;
     public readonly productImagesBaseUrl = process.env.PRODUCT_IMAGES_BASE_URL!;
-    // Not a secret and not environment-dependent here, so it stays in code rather than in .env:
-    public readonly employeeImagesBaseUrl = "http://localhost:4000/api/employees/images/";
+    // Hard-coding this breaks every employee image once the API is not on localhost,
+    // so it is configurable like PRODUCT_IMAGES_BASE_URL and falls back to a local run:
+    public readonly employeeImagesBaseUrl = process.env.EMPLOYEE_IMAGES_BASE_URL || "http://localhost:4000/api/employees/images/";
     public readonly hashSalt = process.env.HASH_SALT!;
     public readonly recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY!;
     public readonly mongodbConnectionString = process.env.MONGODB_CONNECTION_STRING!;
