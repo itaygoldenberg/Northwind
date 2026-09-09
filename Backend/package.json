@@ -5,7 +5,7 @@
     "scripts": {
         "start": "nodemon --exec tsx src/app.ts --quiet",
         "embed": "tsx src/services/rag-embedding.ts",
-        "test": "mocha --import=tsx \"src/**/*.test.ts\""
+        "test": "mocha --import=tsx \"src/**/*.test.ts\" --exit"
     },
     "author": "",
     "license": "ISC",
