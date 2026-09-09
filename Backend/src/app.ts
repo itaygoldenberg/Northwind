@@ -16,12 +16,12 @@ import { socketService } from "./services/socket-service";
 import { ragController } from "./controllers/rag-controller";
 import { northwindMcpServer } from "./ai/mcp-server";
 import { sseHandlers } from "express-mcp-handler";
- 
-class App {
 
+
+class App {
+   
     // Create our server object:
     public server: Express = express();
-
  
     public async start(): Promise<void> {
  
@@ -38,6 +38,7 @@ class App {
         this.server.use(cors()); // Enable CORS.
         this.server.use(express.json()); // Configure express to create request.body from a given JSON.
         this.server.use(expressFileUpload()); // Configure express to create request.files from the request.
+        this.server.use("/ping", errorMiddleware.ping);
  
         // Register "before" middleware:
         // this.server.use(loggerMiddleware.logToConsole);
@@ -75,3 +76,4 @@ export const app = new App();
 app.start();
  
 // taskkill /F /IM node.exe
+ 

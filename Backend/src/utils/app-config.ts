@@ -1,10 +1,10 @@
 import dotenv from "dotenv"; // npm install dotenv
-
+ 
 // Loads .env values into: process.env object:
 dotenv.config({ quiet: true });
-
+ 
 class AppConfig {
-
+ 
     public readonly environment = process.env.ENVIRONMENT!;
     public readonly isDevelopment = this.environment === "development";
     public readonly isProduction = this.environment === "production";
@@ -23,7 +23,8 @@ class AppConfig {
     public readonly openaiApiKey = process.env.OPENAI_API_KEY!;
     public readonly openaiModel = "gpt-5";
     public readonly openaiUrl = "https://api.openai.com/v1/chat/completions";
-
+ 
 }
-
+ 
 export const appConfig = new AppConfig();
+ 

@@ -183,7 +183,9 @@ To build the vector store before using the AI answer route, run `npm run embed` 
 Create `Frontend/.env`:
 
 ```env
+VITE_SERVER_URL=http://localhost:4000
 VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+VITE_OPENAI_API_KEY=your_openai_api_key
 ```
 
 Then, in a second terminal:
@@ -204,7 +206,9 @@ The stack builds and starts four containers: MySQL, MongoDB, the API and the cli
 docker compose up -d --build
 ```
 
-The client is served on `http://localhost` and the API on `http://localhost:4000`.
+The client is served on `http://localhost:5173` and the API on `http://localhost:4000`.
+
+Every service declares a health check, and each one waits for the service below it to report healthy before it starts. The API answers the check on `GET /ping`.
 
 Both database images run every script placed in their initialisation folder, but only on the first start, while the data volume is still empty. To reload the seed data after changing a dump, remove the volumes first:
 
@@ -255,6 +259,7 @@ npm test
 | GET | `/api/sales/:_id` | Public |
 | POST | `/api/sales` | Public |
 | GET | `/api/ask` | Public |
+| GET | `/ping` | Container health check |
 | GET, POST | `/sse` | MCP transport |
 | POST | `/messages` | MCP transport |
 
