@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
+import { appConfig } from "../../../utils/app-config";
 
 export function Home() {
     const [serverOnline, setServerOnline] = useState(true);
@@ -13,15 +14,15 @@ export function Home() {
     useEffect(() => {
         async function fetchDashboardTelemetry() {
             try {
-                const productsResponse = await fetch("http://localhost:4000/api/products");
+                const productsResponse = await fetch(appConfig.productsUrl);
                 const productsData = await productsResponse.json();
                 setProductsCount(productsData.length);
 
-                const employeesResponse = await fetch("http://localhost:4000/api/employees");
+                const employeesResponse = await fetch(appConfig.employeesUrl);
                 const employeesData = await employeesResponse.json();
                 setEmployeesCount(employeesData.length);
 
-                const suppliersResponse = await fetch("http://localhost:4000/api/suppliers");
+                const suppliersResponse = await fetch(appConfig.suppliersUrl);
                 const suppliersData = await suppliersResponse.json();
                 setSuppliersCount(suppliersData.length);
 
