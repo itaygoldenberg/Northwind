@@ -210,6 +210,10 @@ The client is served on `http://localhost:5173` and the API on `http://localhost
 
 Every service declares a health check, and each one waits for the service below it to report healthy before it starts. The API answers the check on `GET /ping`.
 
+Sign in with one of the seeded demo accounts, for example `bart@gmail.com` / `1234` (administrator), or `lisa@gmail.com` / `1234` (signed-in user).
+
+Their passwords are stored in `Database/MySQL/northwind.sql` as HMAC hashes of a **public demo salt**, so `compose.yaml` sets `HASH_SALT` to that same demo value for the container. The private salt in `Backend/.env` is what a local run uses, and it never leaves the machine. Use your own salt outside the demo.
+
 Both database images run every script placed in their initialisation folder, but only on the first start, while the data volume is still empty. To reload the seed data after changing a dump, remove the volumes first:
 
 ```bash
@@ -267,6 +271,7 @@ npm test
 
 - Never commit `Backend/.env`, `Frontend/.env` or real database credentials.
 - Use long, unique JWT and hash secrets outside development. Changing the salt invalidates every stored password.
+- The seeded users only sign in while `HASH_SALT` matches the demo salt the dump was hashed with. Point the salt at your own value and register a fresh account instead.
 - Any Vite variable prefixed with `VITE_` is bundled into the client and readable by anyone who opens the browser tools. Keep provider secrets on the server and reach them through the API.
 - The MCP server has to be reachable from the internet for a hosted model to call it, so a tunnel is needed while developing locally.
 - Review CORS, uploads, rate limits and database privileges before public deployment.

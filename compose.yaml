@@ -108,6 +108,10 @@ services:
       MYSQL_PASSWORD: Pa$$w0rd
       MYSQL_DATABASE: northwind
       MONGODB_CONNECTION_STRING: mongodb://mongo-service:27017/northwind
+      # The seeded users in Database/MySQL/northwind.sql were hashed with this
+      # public demo salt, so the demo accounts can sign in. It deliberately
+      # differs from the private HASH_SALT in .env, which stays out of the repo.
+      HASH_SALT: northwind-demo-salt
  
     # Healthcheck - constantly check if our service is working well:
     healthcheck:

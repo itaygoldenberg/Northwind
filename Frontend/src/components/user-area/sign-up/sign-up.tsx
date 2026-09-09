@@ -34,7 +34,10 @@ export function SignUp() {
 
             <h2 className="page-main-title">Register to Northwind</h2>
 
-<form onSubmit={handleSubmit(send)}>
+{/* send() touches captchaRef only inside the submit handler, never during render,
+                but the rule cannot prove that handleSubmit defers the call. */}
+            {/* eslint-disable-next-line react-hooks/refs */}
+            <form onSubmit={handleSubmit(send)}>
 
     <label>First name</label>
     <input type="text" {...register("firstName")} placeholder="Enter First Name" required />

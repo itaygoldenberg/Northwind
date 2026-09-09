@@ -1,6 +1,6 @@
 class AppConfig {
  
-    public readonly serverUrl = import.meta.env.VITE_SERVER_URL;
+    public readonly serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:4000";
  
     public readonly productsUrl = this.serverUrl + "/api/products";
     public readonly employeesUrl = this.serverUrl + "/api/employees";
@@ -11,7 +11,7 @@ class AppConfig {
     public readonly recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
  
     public readonly openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
-    public readonly mcpServerUrl = "https://pointedly-enteric-yee.ngrok-free.dev/sse";
+    public readonly mcpServerUrl = "https://graveyard-cosmetics-endorphin.ngrok-free.dev/sse";
     public readonly openaiUrl = "https://api.openai.com/v1/responses";
 }
  

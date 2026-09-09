@@ -400,7 +400,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Bart','Simpson','bart@gmail.com','1234',1),(2,'Lisa','Simpson','lisa@gmail.com','1234',2),(7,'Marge','Simpson','marge@gmail.com','1234',2);
+INSERT INTO `users` VALUES (1,'Bart','Simpson','bart@gmail.com','d6765421300a87dcc9b0fd177a9d762c966c0097927191570247a249155fd8ca61dcafef5dd98f9ddbfb5c027ed1f1978d4ae2276d18b85150e57c5f63857be6',1),(2,'Lisa','Simpson','lisa@gmail.com','d6765421300a87dcc9b0fd177a9d762c966c0097927191570247a249155fd8ca61dcafef5dd98f9ddbfb5c027ed1f1978d4ae2276d18b85150e57c5f63857be6',2),(7,'Marge','Simpson','marge@gmail.com','d6765421300a87dcc9b0fd177a9d762c966c0097927191570247a249155fd8ca61dcafef5dd98f9ddbfb5c027ed1f1978d4ae2276d18b85150e57c5f63857be6',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
